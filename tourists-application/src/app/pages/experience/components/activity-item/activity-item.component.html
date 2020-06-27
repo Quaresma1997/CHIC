@@ -1,0 +1,48 @@
+<div class="item">
+  <div class="row">
+    <div class="text">
+      <div class="titleCompleted">
+        <b>{{ activity.title }}</b>
+        <ion-icon
+          *ngIf="activity.completed; else blockedIcon"
+          name="checkmark-circle-sharp"
+        ></ion-icon>
+        <ng-template #blockedIcon>
+          <ion-icon
+            *ngIf="activity.blocked; else unlockedIcon"
+            name="lock-closed-sharp"
+          ></ion-icon>
+        </ng-template>
+        <ng-template #unlockedIcon>
+          <ion-icon
+            name="lock-open-sharp"
+          ></ion-icon>
+        </ng-template>
+      </div>
+      <span *ngIf="activity.distance != null; else noDistance"
+        >Proximity: {{ activity.distance }} m</span
+      >
+      <ng-template #noDistance>
+        <span>Proximity: Getting location...</span>
+      </ng-template>
+
+      <span *ngIf="address != null; else noAddress"
+        ><ion-icon name="location-sharp"></ion-icon> {{ address }}</span
+      >
+      <ng-template #noAddress>
+        <span
+          ><ion-icon name="location-sharp"></ion-icon> Getting address...</span
+        >
+      </ng-template>
+    </div>
+  </div>
+  <div>
+    <ion-button
+      class="enterBtn"
+      (click)="startActivity()"
+      [disabled]="activity.blocked && !activity.completed"
+    >
+      <ion-icon name="arrow-forward-sharp"></ion-icon>
+    </ion-button>
+  </div>
+</div>

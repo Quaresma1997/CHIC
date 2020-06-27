@@ -1,0 +1,52 @@
+<ion-card>
+  <div id="imgDiv">
+    <img
+      class="image"
+      [defaultImage]="'assets/imgs/picture_placeholder.svg'"
+      [lazyLoad]="experience.image"
+      alt="{{ experience.title }}"
+      routerLink="/experiences/{{ experience.id }}"
+    />
+  </div>
+  <div class="content">
+    <ion-card-header routerLink="/experiences/{{ experience.id }}">
+      <div class="row">
+        <div class="titleDiv">
+          <ion-input
+            class="experienceTitle"
+            no-padding
+            [disabled]="true"
+            [ngModel]="experience.title"
+          ></ion-input>
+        </div>
+        <ion-icon
+          *ngIf="experience.published"
+          name="cloud-upload-sharp"
+        ></ion-icon>
+      </div>
+    </ion-card-header>
+    <div class="otherContent">
+      <div class="description" routerLink="/experiences/{{ experience.id }}">
+        <span>{{ experience.description }}</span>
+      </div>
+      <div id="removeExperience">
+        <ion-button
+          class="ion-text-end"
+          class="button"
+          size="small"
+          (click)="callUpdateExperince()"
+        >
+          <ion-icon name="create-sharp" slot="icon-only"></ion-icon>
+        </ion-button>
+        <ion-button
+          class="ion-text-end"
+          class="button"
+          size="small"
+          (click)="callDeleteExperince()"
+        >
+          <ion-icon name="trash-sharp" slot="icon-only"></ion-icon>
+        </ion-button>
+      </div>
+    </div>
+  </div>
+</ion-card>

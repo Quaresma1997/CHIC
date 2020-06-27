@@ -1,0 +1,20 @@
+#titleDiv {
+  padding: 16px;
+}
+
+#page-title {
+  font-weight: bold;
+}
+
+.row {
+  flex-wrap: wrap;
+  display: flex;
+  justify-content: flex-start;
+  padding: 16px;
+}
+
+.listItem {
+  width: 328px;
+  height: 328px;
+  margin: 16px;
+}

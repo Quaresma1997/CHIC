@@ -1,0 +1,64 @@
+<div id="main">
+  <app-dashboard-toolbar></app-dashboard-toolbar>
+  <ion-content id="content">
+    <!-- <div class="title">
+      <span><b>Favoritos</b></span>
+      <img [src]="'assets/imgs/dashPic.svg'" class="image" /> 
+    </div> -->
+    <div class="title">
+      <span class="titleSpan">Filters</span>
+    </div>
+    <div class="orderDiv">
+      <span class="spanOrder">Order by</span>
+      <ion-select
+        class="selectSet"
+        interface="popover"
+        [(ngModel)]="order"
+        (ionChange)="changeOrder()"
+      >
+        <ion-select-option value="date">Creation Date</ion-select-option>
+        <ion-select-option value="name">Title</ion-select-option>
+        <ion-select-option value="distance">Proximity</ion-select-option>
+      </ion-select>
+    </div>
+    <div class="filterDiv">
+      <span>Proximity</span>
+      <ion-range
+        pin="true"
+        min="0"
+        max="10000"
+        step="100"
+        debounce="1000"
+        [(ngModel)]="proximity"
+        (ionChange)="changeFilter('proximity')"
+      >
+        <ion-label slot="start">0</ion-label>
+        <ion-label slot="end">10000</ion-label>
+      </ion-range>
+
+      <span class="spanCategories">Tags</span>
+      <div class="tags">
+        <div
+          [class.selected]="'' === selectedTag"
+          (click)="changeFilter('tag', '')"
+          class="tagBtn"
+        >
+          <span>
+            All
+          </span>
+        </div>
+        <div
+          [class.selected]="tag === selectedTag"
+          (click)="changeFilter('tag', tag)"
+          class="tagBtn"
+          *ngFor="let tag of tags$ | async"
+        >
+          <span>
+            {{ tag }}
+          </span>
+        </div>
+      </div>
+    </div>
+    <!-- <ion-button (click)="goToMap()">Mapa</ion-button> -->
+  </ion-content>
+</div>

@@ -1,0 +1,8 @@
+{
+  "appId": "com.chic.authoringtool",
+  "appName": "Authoring Tool",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www",
+  "cordova": {}
+}

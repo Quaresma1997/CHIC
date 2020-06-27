@@ -1,0 +1,27 @@
+<div class="slideshow-container">
+  <div
+    class="mySlides fade"
+    *ngFor="let image of images; let i = index"
+    [ngClass]="i === slideIndex ? 'activeSlide' : 'hiddenSlide'"
+  >
+    <img
+      [defaultImage]="'assets/imgs/picture_placeholder.svg'"
+      [lazyLoad]="image.url"
+      [alt]="image.name"
+      class="image"
+    />
+    <!-- <div class="text">Caption Text</div> -->
+  </div>
+
+  <a class="prev" (click)="plusSlides(-1)">&#10094;</a>
+  <a class="next" (click)="plusSlides(1)">&#10095;</a>
+</div>
+
+<div class="dotsDiv">
+  <span
+    class="dot"
+    *ngFor="let image of images; let i = index"
+    (click)="currentSlide(i)"
+    [ngClass]="i === slideIndex ? 'active' : ''"
+  ></span>
+</div>

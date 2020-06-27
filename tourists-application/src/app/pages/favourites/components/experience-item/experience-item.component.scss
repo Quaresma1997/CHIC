@@ -1,0 +1,98 @@
+ion-card {
+  width: 288px;
+  color: black;
+  margin: 16px;
+  margin-top: 0;
+  background-color: white;
+  border-radius: 0;
+  cursor: pointer;
+}
+
+.content {
+  padding: 8px;
+}
+
+.row {
+  flex-wrap: wrap;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+a {
+  text-decoration: none;
+  font-weight: bold;
+}
+
+ion-card-header {
+  padding: 0;
+
+  .titleSpan {
+    text-transform: uppercase;
+    color: black;
+    font-size: 16px;
+    font-weight: bold;
+  }
+}
+
+.otherContent {
+  // height: 112px;
+  display: flex;
+  flex-direction: column;
+}
+
+.description {
+  padding: 0;
+  height: 80px;
+  overflow: auto;
+  margin: 8px 0;
+}
+
+/*.button {
+  --background: none !important;
+  --padding-start: 0;
+  --padding-end: 0;
+  --box-shadow: none;
+  color: black;
+  width: 20px;
+  height: 20px;
+}*/
+.complete {
+  color: var(--ion-color-green) !important;
+  font-size: 20px;
+}
+
+#imgDiv {
+  height: 144px;
+  display: flex;
+  justify-content: center;
+  .image {
+    width: 100%;
+    object-fit: cover;
+  }
+
+   .favouriteDiv {
+    position: absolute;
+    right: 8px;
+    top: 8px;
+
+    ion-icon {
+      font-size: 32px;
+      cursor: pointer;
+    }
+
+    .clicked {
+      color: var(--ion-color-purple) !important;
+    }
+  }
+}
+
+.experienceBtn {
+  --background: var(--ion-color-green);
+  margin-left: auto;
+}
+
+.experienceBtn:hover {
+  --color: var(--ion-color-green);
+  --background: white;
+}

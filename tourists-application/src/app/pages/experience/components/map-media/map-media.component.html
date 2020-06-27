@@ -1,0 +1,43 @@
+<div #mapContainer class="map-container">
+  <div #mapParent class="map-frame">
+    <div #map id="map" class="mapRadar"></div>
+  </div>
+  <ion-icon
+    #indicator
+    class="indicators"
+    name="arrow-forward-outline"
+    slot="start"
+    style="visibility: hidden;"
+  ></ion-icon>
+  <div class="timeDiv" *ngIf="hasTimer">
+    <div class="time">
+      <p>{{ timer | timeFormat }}</p>
+    </div>
+  </div>
+  <div class="imgsDiv">
+    <div class="imgs">
+      <div class="activityDescDiv">Find the places</div>
+      <div
+        class="image"
+        *ngFor="let image of media; let i = index"
+        (click)="openImageModal(image)"
+      >
+        <img
+          class="imgContent"
+          [defaultImage]="'assets/imgs/picture_placeholder.svg'"
+          [lazyLoad]="image.url"
+          [alt]="image.name"
+        />
+        <ng-container *ngIf="this.goals != null">
+          <ion-icon
+            *ngIf="this.goals[i]"
+            class="check"
+            name="checkmark-circle-sharp"
+          ></ion-icon>
+        </ng-container>
+      </div>
+    </div>
+    <a class="prev" (click)="move($event, true)">&#10094;</a>
+    <a class="next" (click)="move($event, false)">&#10095;</a>
+  </div>
+</div>

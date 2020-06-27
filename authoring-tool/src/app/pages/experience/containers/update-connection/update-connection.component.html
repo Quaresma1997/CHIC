@@ -1,0 +1,42 @@
+<ion-content class="ion-padding">
+  <div class="titleDiv">
+    <ion-title class="purple">Connection</ion-title>
+    <ion-icon
+      size="medium"
+      
+      (click)="closeThis()"
+      name="close-circle-sharp"
+      class="closeBtn"
+      slot="icon-only"
+    ></ion-icon>
+  </div>
+  <div id="connectionsDiv">
+    <div class="row">
+      <div class="innerLabel">
+        <span>From</span>
+      </div>
+      <ion-input
+        class="input"
+        placeholder="Nome da Atividade"
+        [(ngModel)]="activitySource.title"
+        readonly
+      ></ion-input>
+    </div>
+    <div class="row">
+      <div class="innerLabel">
+        <span>To</span>
+      </div>
+      <ion-input
+        class="input"
+        placeholder="Nome da Atividade"
+        [(ngModel)]="activityTarget.title"
+        readonly
+      ></ion-input>
+    </div>
+  </div>
+  <div class="bottomDiv">
+    <ion-button (click)="remove()" class="bottomBtn" expand="block"
+      >Delete</ion-button
+    >
+  </div>
+</ion-content>

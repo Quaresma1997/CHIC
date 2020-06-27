@@ -1,0 +1,40 @@
+.col {
+  display: flex;
+  flex-wrap: wrap;
+  flex-flow: column;
+  height: 100%;
+
+  .content {
+    flex-grow: 1;
+    .img {
+      // max-width: 320px;
+      object-fit: contain;
+      width: 100%;
+      max-height: 300px;
+    }
+
+    .title {
+      font-size: 24px;
+      font-weight: 300;
+    }
+
+    .otherContent {
+      padding: 16px;
+
+      .description {
+        display: block;
+        margin-top: 8px;
+      }
+    }
+  }
+
+  .experienceBtn {
+    --background: var(--ion-color-green);
+    // margin-left: auto;
+  }
+
+  .experienceBtn:hover {
+    --color: var(--ion-color-green);
+    --background: white;
+  }
+}

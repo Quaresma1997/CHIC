@@ -1,0 +1,380 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "~@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import "~@ionic/angular/css/display.css";
+
+/* Optional CSS utils that can be commented out */
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+
+@import "~leaflet/dist/leaflet.css";
+@import "~leaflet-toolbar/dist/leaflet.toolbar.css";
+@import "~esri-leaflet-geocoder/dist/esri-leaflet-geocoder.css";
+
+@import "https://fonts.googleapis.com/icon?family=Material+Icons";
+
+mat-tab-group {
+  height: 100%;
+}
+
+.mat-tab-body-wrapper {
+  height: 100%;
+}
+mat-tab-body {
+  height: 100%;
+}
+
+.modalCreateActivity .modal-wrapper {
+  height: 250px;
+  width: 400px;
+  // border-radius: 16px;
+}
+
+.modalPreview .modal-wrapper {
+  width: 300px;
+  max-height: 500px;
+  // border-radius: 16px;
+}
+
+.modalMap .modal-wrapper {
+  width: 300px;
+  max-height: 400px;
+  // border-radius: 16px;
+}
+
+.leaflet-pane {
+  z-index: 0 !important;
+}
+
+.searchbar-input.sc-ion-searchbar-md {
+  padding-top: 9px !important;
+  padding-bottom: 9px !important;
+  -webkit-padding-start: 36px !important;
+  padding-inline-start: 36px !important;
+  -webkit-padding-end: 25px !important;
+  padding-inline-end: 25px !important;
+  border-radius: 8px !important;
+}
+
+.searchbar-search-icon.sc-ion-searchbar-md {
+  left: 6px !important;
+  top: 12px !important;
+  height: 24px !important;
+  width: 24px !important;
+  color: var(--ion-color-purple-medium) !important;
+}
+
+.searchbar-clear-button.sc-ion-searchbar-md {
+  right: 0px !important;
+  color: var(--ion-color-purple-medium) !important;
+}
+
+.selectedAddress {
+  .native-input[disabled].sc-ion-input-md {
+    opacity: 1 !important;
+  }
+}
+
+.leaflet-toolbar-0 {
+  list-style: none;
+  padding-left: 0;
+  border: none;
+  /* border: 2px solid rgba(0, 0, 0, .2); */
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.65);
+  border-radius: 8px;
+}
+
+.leaflet-toolbar-0 > li > .leaflet-toolbar-icon {
+  display: block;
+  width: 26px;
+  height: 26px;
+  line-height: 30px;
+  margin-right: 0;
+  padding-right: 0;
+  border-right: 0;
+  text-align: center;
+  text-decoration: none;
+  background-color: #fff;
+}
+
+.leaflet-toolbar-0 > li > .leaflet-toolbar-icon > ion-icon {
+  height: 18px;
+  width: 18px;
+  margin-top: 4px;
+}
+
+ion-menu {
+  --border: none;
+}
+
+.split-pane-visible > .split-pane-side {
+  min-width: 224px !important;
+  max-width: 224px !important;
+}
+
+ion-icon {
+  color: var(--ion-color-purple);
+  --ionicon-stroke-width: 60px;
+}
+
+.white {
+  color: var(--ion-color-light) !important;
+}
+
+.purple {
+  color: var(--ion-color-purple) !important;
+}
+
+.purple-high {
+  color: var(--ion-color-purple-high) !important;
+}
+
+.purple-medium {
+  color: var(--ion-color-purple-medium) !important;
+}
+
+.purple-low {
+  color: var(--ion-color-purple-low) !important;
+}
+
+.pink {
+  color: var(--ion-color-pink) !important;
+}
+
+.font-12 {
+  font-size: 12px !important;
+}
+
+.font-16 {
+  font-size: 16px !important;
+}
+
+.font-24 {
+  font-size: 24px !important;
+}
+
+ion-label {
+  color: var(--ion-color-grey) !important;
+  font-size: 16px !important;
+}
+
+textarea {
+  line-height: 24px !important;
+}
+
+span,
+b {
+  color: black;
+  font-size: 16px !important;
+  line-height: 24px !important;
+}
+
+.experienceTitle {
+  input {
+    padding: 0 !important;
+    color: black !important;
+    opacity: 1 !important;
+    cursor: pointer !important;
+  }
+}
+
+.cxtMenuIcon {
+  color: #ffffff !important;
+}
+
+ion-title {
+  font-size: 24px;
+}
+
+.alert-wrapper {
+  padding: 16px;
+  border-radius: 0 !important;
+  max-width: 400px !important;
+}
+
+.alert-head {
+  margin-bottom: 16px;
+  padding: 0 !important;
+
+  .alert-title {
+    color: var(--ion-color-purple) !important;
+    font-size: 24px;
+  }
+}
+
+.alert-message {
+  font-size: 16px !important;
+  // border-radius: 8px;
+  padding: 8px !important;
+  // background-color: var(--ion-color-grey-tint) !important;
+  color: black !important;
+  margin-bottom: 32px !important;
+  line-height: 24px !important;
+}
+
+.alert-button-group {
+  justify-content: space-between !important;
+
+  padding: 0 !important;
+
+  .alertBtn {
+    // border-radius: 8px;
+    margin: 0 !important;
+  }
+
+  .cancelBtn {
+    background-color: var(--ion-color-purple) !important;
+    span {
+      color: white !important;
+    }
+
+    font-weight: bold;
+  }
+
+  .cancelBtn:hover {
+    background-color: var(--ion-color-grey-tint) !important;
+    span {
+      color: var(--ion-color-purple) !important;
+    }
+    font-weight: bold;
+  }
+
+  .confirmBtn {
+    background-color: var(--ion-color-grey-tint) !important;
+    span {
+      color: var(--ion-color-purple) !important;
+    }
+
+    font-weight: bold;
+  }
+
+  .confirmBtn:hover {
+    span {
+      color: white !important;
+    }
+    background-color: var(--ion-color-purple) !important;
+    font-weight: bold;
+  }
+}
+
+.selectSet {
+  .mat-select-trigger {
+    width: 100%;
+    height: 100%;
+  }
+
+  .mat-select-value {
+    width: 0;
+  }
+  .mat-select-arrow {
+    margin: auto;
+    color: var(--ion-color-green) !important;
+  }
+}
+
+.selectSet:hover {
+  .mat-select-arrow {
+    color: white !important;
+  }
+}
+
+.setOption {
+  span {
+    color: var(--ion-color-purple) !important;
+  }
+}
+
+.setOption:hover {
+  background-color: var(--ion-color-green) !important;
+  span {
+    color: white !important;
+    mat-icon {
+      color: white !important;
+    }
+  }
+}
+
+* {
+  font-family: Lato !important;
+}
+
+ion-label {
+  color: var(--ion-color-purple-medium) !important;
+}
+
+.mat-expansion-panel-content {
+  background-color: var(--ion-color-grey-tint);
+}
+
+.picker-wrapper {
+  .picker-toolbar {
+    .picker-toolbar-button:first-child {
+      margin-right: 4px !important;
+      .picker-button {
+        background-color: var(--ion-color-purple) !important;
+        color: white !important;
+      }
+      .picker-button:hover {
+        background-color: var(--ion-color-grey-tint) !important;
+        color: var(--ion-color-purple) !important;
+      }
+    }
+
+    .picker-toolbar-button {
+      .picker-button {
+        background-color: var(--ion-color-grey-tint) !important;
+        color: var(--ion-color-purple) !important;
+      }
+      .picker-button:hover {
+        background-color: var(--ion-color-purple) !important;
+        color: white !important;
+      }
+    }
+  }
+
+  .picker-columns {
+    .picker-opts {
+      .picker-opt-selected {
+        color: var(--ion-color-purple-medium) !important;
+      }
+    }
+  }
+}
+
+ion-button {
+  --border-radius: 0 !important;
+  --box-shadow: none !important;
+  font-size: 16px;
+  text-transform: capitalize;
+  margin-left: 0;
+  margin-right: 4px;
+  --border-radius: 0;
+}
+
+.panelHeader {
+  .mat-expansion-indicator::after {
+    color: var(--ion-color-purple-medium) !important;
+  }
+}
+
+.mat-expansion-panel-body {
+  padding: 0 8px 8px !important;
+}

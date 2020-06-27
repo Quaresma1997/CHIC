@@ -1,0 +1,42 @@
+<ion-card>
+  <div id="imgDiv">
+    <img
+      [defaultImage]="'assets/imgs/picture_placeholder.svg'"
+      [lazyLoad]="experience.image"
+      alt="{{ experience.title }}"
+      class="image"
+      (click)="go()"
+    />
+    <div class="favouriteDiv">
+      <ion-icon
+        (click)="markFavourite()"
+        [color]="!favourite ? 'light' : ''"
+        [class.clicked]="favourite"
+        name="star-sharp"
+        slot="icon-only"
+      ></ion-icon>
+    </div>
+  </div>
+  <div class="content" (click)="go()">
+    <ion-card-header>
+      <div class="row">
+        <div class="title">
+          <span class="titleSpan">{{ experience.title }}</span>
+        </div>
+        <ion-icon
+          class="complete"
+          *ngIf="completed"
+          name="checkmark-circle-sharp"
+        ></ion-icon>
+      </div>
+    </ion-card-header>
+    <div class="otherContent">
+      <div class="description">
+        <span>{{ experience.description }}</span>
+      </div>
+      <!-- <ion-button class="experienceBtn" (click)="go()">
+        {{ experienceStateLabel }}
+      </ion-button> -->
+    </div>
+  </div>
+</ion-card>

@@ -1,0 +1,9 @@
+<ion-content class="content" *ngIf="activity.moduleData != null; else noModule">
+  <content-viewer [mod]="module" [act]="activity"></content-viewer>
+</ion-content>
+
+<ng-template #noModule>
+  <div class="noModule">
+    <span>This activity doesn't have content for the selected module!</span>
+  </div>
+</ng-template>

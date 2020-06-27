@@ -1,0 +1,24 @@
+<div class="row">
+  <div class="matSelect">
+    <mat-select (selectionChange)="callAdd()" [(ngModel)]="selectedActivityId">
+      <!-- <mat-option
+        *ngIf="type === 0"
+        [disabled]="checkActivityAvailability(0)"
+        value="n0"
+        >Início</mat-option
+      > -->
+      <mat-option
+        *ngFor="let activity of activities"
+        [disabled]="checkActivityAvailability(activity.id)"
+        [value]="activity.id"
+        >{{ activity.title }}</mat-option
+      >
+    </mat-select>
+  </div>
+  <div class="iconDiv">
+    <ion-icon (click)="callDelete()" name="trash-outline"></ion-icon>
+  </div>
+  <div class="iconDiv">
+    <ion-icon (click)="callCreate()" name="add-circle-outline"></ion-icon>
+  </div>
+</div>

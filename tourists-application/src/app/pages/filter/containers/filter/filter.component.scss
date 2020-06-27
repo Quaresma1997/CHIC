@@ -1,0 +1,93 @@
+#main {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  // background-color: #f0f0f0;
+  flex-wrap: wrap;
+  display: flex;
+  flex-direction: column;
+
+  #content {
+    --ion-background-color: #ffffff;
+    --padding-start: 16px;
+    --padding-end: 16px;
+  }
+
+  .tags {
+    margin-top: 8px;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .tagBtn {
+    // background-color: var(--ion-color-purple-grey-light) !important;
+    
+    padding: 8px 0;
+    // border-radius: 8px;
+    margin: 0 10px 0 0;
+    cursor: pointer;
+    white-space: nowrap;
+
+    span {
+      font-size: 18px;
+      color: var(--ion-color-purple-grey);
+    }
+  }
+
+  .selected {
+    span {
+      color: var(--ion-color-green);
+    }
+  }
+}
+
+.title {
+  margin-bottom: 16px;
+  .titleSpan {
+    font-weight: 300;
+    font-size: 32px;
+    color: var(--ion-color-purple) !important;
+  }
+}
+
+.matSelect {
+  margin: 16px 0;
+  // text-align: center;
+  mat-select {
+    background-color: var(--ion-color-grey-tint);
+    // border-radius: 8px;
+    padding: 8px;
+  }
+}
+
+.orderDiv {
+  display: flex;
+  align-items: center;
+
+  .spanOrder {
+    margin-right: 8px;
+  }
+
+  ion-select {
+    --padding-start: 0;
+    --padding-top: 0;
+    --padding-bottom: 0;
+  }
+}
+
+.filterDiv {
+  margin-top: 24px;
+  ion-range {
+    padding: 0;
+    margin-bottom: 24px;
+    --pin-color: white;
+    --pin-background: var(--ion-color-purple-grey);
+    --bar-background: var(--ion-color-purple-grey);
+    --knob-background: var(--ion-color-green);
+    --bar-background-active: var(--ion-color-purple);
+
+    ion-label {
+      font-size: 16px;
+    }
+  }
+}

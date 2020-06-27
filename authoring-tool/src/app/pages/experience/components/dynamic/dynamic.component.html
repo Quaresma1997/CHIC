@@ -1,0 +1,31 @@
+<ng-container [ngSwitch]="type">
+  <div *ngSwitchCase="'slider'">
+    <app-slider [images]="data"></app-slider>
+  </div>
+  <div *ngSwitchCase="'audio'">
+    <app-audio
+      [audio]="data"
+      (stopAllAudios)="stopAllAudios.emit()"
+    ></app-audio>
+  </div>
+  <div *ngSwitchCase="'text'">
+    <span>{{ data }}</span>
+  </div>
+  <div class="imageDiv" *ngSwitchCase="'image'">
+    <img
+      class="image"
+      [defaultImage]="'assets/imgs/picture_placeholder.svg'"
+      [lazyLoad]="data.url"
+      [alt]="data.name"
+    />
+  </div>
+  <div *ngSwitchCase="'video'">
+    <video width="300" controls>
+      <source [src]="data.url" type="video/mp4" />
+      Your browser does not support HTML video.
+    </video>
+  </div>
+  <div class="mapDiv" *ngSwitchCase="'mapImages'">
+    <app-map-media [media]="data" [time]="time"></app-map-media>
+  </div>
+</ng-container>

@@ -1,0 +1,67 @@
+.mainDiv {
+  height: 100%;
+  width: 100%;
+  background-color: white;
+  padding: 16px 8px;
+  display: flex;
+  flex-direction: column;
+}
+
+.image {
+  // margin: auto;
+  margin-bottom: 16px;
+  /*border-radius: 8px;
+  width: 100%;
+  height: 100%;
+  margin: auto;
+  object-fit: contain;*/
+}
+
+b {
+  text-align: center;
+}
+
+.btns {
+  margin-top: 16px;
+  display: flex;
+  justify-content: center;
+  ion-button {
+    margin-top: 0;
+  }
+
+  .continueBtn {
+    --background: var(--ion-color-grey-tint) !important;
+    --color: var(--ion-color-purple) !important;
+  }
+
+  .continueBtn:hover {
+    --background: var(--ion-color-purple) !important;
+    --color: white !important;
+  }
+
+  .leaveBtn {
+    --background: var(--ion-color-purple) !important;
+    --color: white !important;
+  }
+
+  .leaveBtn:hover {
+    --background: var(--ion-color-grey-tint) !important;
+    --color: var(--ion-color-purple) !important;
+  }
+}
+
+.congratsDiv {
+  display: flex;
+  flex-direction: column;
+}
+
+.congratsTitle {
+  font-size: 32px;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+}
+
+.congratsText {
+  font-size: 18px;
+  text-align: center;
+}

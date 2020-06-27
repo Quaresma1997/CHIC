@@ -1,0 +1,22 @@
+<div class="main">
+  <div class="timeDiv" *ngIf="time != null">
+    <div class="time">
+      <p>{{ time | timeFormat }}</p>
+    </div>
+  </div>
+  <div class="imgsDiv" #imgsDiv>
+    <div class="imgs">
+      <div class="activityDescDiv">Find the places</div>
+      <div class="image" *ngFor="let image of media">
+        <img
+          class="imgContent"
+          [defaultImage]="'assets/imgs/picture_placeholder.svg'"
+          [lazyLoad]="image.url"
+          [alt]="image.name"
+        />
+      </div>
+    </div>
+    <a class="prev" (click)="move($event, true)">&#10094;</a>
+    <a class="next" (click)="move($event, false)">&#10095;</a>
+  </div>
+</div>

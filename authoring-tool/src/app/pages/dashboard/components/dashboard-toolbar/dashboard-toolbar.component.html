@@ -1,0 +1,14 @@
+<div id="content">
+  <div id="titleDiv" class="ion-text-uppercase">
+    <h1>Dashboard</h1>
+  </div>
+  <div id="search">
+    <ion-searchbar
+      type="text"
+      placeholder="Search"
+      [(ngModel)]="query"
+      (ionInput)="getExperiences($event)"
+      maxlength="30"
+    ></ion-searchbar>
+  </div>
+</div>

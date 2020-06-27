@@ -1,0 +1,16 @@
+<div class="map-container">
+  <div #mapParent class="map-frame">
+    <div #map2 id="map2"></div>
+  </div>
+</div>
+<div class="bottom">
+  <ion-button  (click)="selectLocation(false)" class="bottomBtn cancelBtn"
+    >Cancel</ion-button
+  >
+  <ion-button
+    [disabled]="newLocation == null"
+    (click)="selectLocation(true)"
+    class="bottomBtn confirmBtn"
+    >Confirm</ion-button
+  >
+</div>

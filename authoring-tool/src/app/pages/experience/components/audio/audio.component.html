@@ -1,0 +1,12 @@
+<button
+  class="btnAudio"
+  (click)="playAudio()"
+  *ngIf="audioPlaying === false; else stopSound"
+>
+  <ion-icon size="large" class="audioIcon" name="volume-high-sharp"></ion-icon>
+</button>
+<ng-template #stopSound>
+  <button class="btnAudio" (click)="stopAudio()">
+    <ion-icon size="large" class="audioIcon" name="volume-mute-sharp"></ion-icon>
+  </button>
+</ng-template>

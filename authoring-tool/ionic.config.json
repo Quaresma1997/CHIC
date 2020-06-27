@@ -1,0 +1,7 @@
+{
+  "name": "authoring-tool",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

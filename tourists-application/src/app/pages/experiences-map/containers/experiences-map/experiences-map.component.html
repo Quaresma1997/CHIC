@@ -1,0 +1,12 @@
+<app-experience-toolbar></app-experience-toolbar>
+<div class="map-container">
+  <div #mapParent class="map-frame">
+    <div #map id="map" class="dropzone"></div>
+  </div>
+</div>
+<app-map-experience
+  *ngIf="selectedExperience != null"
+  [experience]="selectedExperience"
+  [experienceState]="experienceState"
+  [experienceStateLabel]="experienceStateLabel"
+></app-map-experience>

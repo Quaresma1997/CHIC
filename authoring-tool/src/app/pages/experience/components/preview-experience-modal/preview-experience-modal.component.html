@@ -1,0 +1,63 @@
+<div id="main">
+  <div>
+    <ion-title class="purple">Preview Experience</ion-title>
+  </div>
+
+  <div class="preStart" *ngIf="!started">
+    <div class="content">
+      <b>Select an activity:</b>
+      <div class="matSelect">
+        <mat-select (selectionChange)="selectActivity($event)">
+          <mat-option
+            *ngFor="let act of activities$ | async"
+            [value]="act.id"
+            >{{ act.title }}</mat-option
+          >
+        </mat-select>
+      </div>
+    </div>
+    <ion-button
+      (click)="previewActivity()"
+      class="startPreviewBtn"
+      [disabled]="selectedActivity == null"
+    >
+      Start
+    </ion-button>
+  </div>
+  <div class="col" *ngIf="started">
+    <app-preview-activity
+      class="preview"
+      [activity]="nextSelectedActivity"
+      [module]="nextSelectedModule"
+    ></app-preview-activity>
+    <div class="bottom" [class.bottomLeave]="finished">
+      <div class="labelAndSelect" *ngIf="nextChildrenActivities.length > 0">
+        <b>Next Activity</b>
+        <div class="matSelect">
+          <mat-select
+            (selectionChange)="selectActivity($event)"
+            [(value)]="selectedAct"
+          >
+            <mat-option
+              *ngFor="let act of nextChildrenActivities"
+              [value]="act.id"
+              >{{ act.title }}</mat-option
+            >
+          </mat-select>
+        </div>
+      </div>
+      <ion-button
+        (click)="previewActivity()"
+        class="nextBtn"
+        *ngIf="!finished; else leaveBlock"
+      >
+        Next
+      </ion-button>
+      <ng-template #leaveBlock
+        ><ion-button (click)="leavePreview()" class="nextBtn">
+          Leave
+        </ion-button></ng-template
+      >
+    </div>
+  </div>
+</div>

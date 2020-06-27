@@ -1,0 +1,25 @@
+ion-item {
+  cursor: pointer;
+
+  ion-label {
+    color: var(--ion-color-purple);
+    font-weight: 500;
+    font-size: 24px;
+  }
+}
+
+ion-content {
+  --ion-background-color: white;
+}
+
+ion-toolbar {
+  --ion-background-color: white !important;
+}
+
+ion-title {
+    color: var(--ion-color-green);
+}
+
+.icon {
+  color: var(--ion-color-green) !important;
+}

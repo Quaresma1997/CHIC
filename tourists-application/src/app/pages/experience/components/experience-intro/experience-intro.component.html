@@ -1,0 +1,17 @@
+<app-experience-toolbar></app-experience-toolbar>
+<div class="col">
+  <ion-content class="content">
+    <img
+      class="img"
+      [defaultImage]="'assets/imgs/picture_placeholder.svg'"
+      [lazyLoad]="(experience$ | async).image"
+    />
+    <div class="otherContent">
+      <span class="title">{{ (experience$ | async).title }}</span>
+      <span class="description">{{ (experience$ | async).description }}</span>
+    </div>
+  </ion-content>
+  <ion-button class="experienceBtn" (click)="restart()" *ngIf="(experience$ | async).completed">
+    Restart
+  </ion-button>
+</div>

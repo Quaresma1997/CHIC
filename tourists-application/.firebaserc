@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "chic-15ea3": {
+      "hosting": {
+        "app": [
+          "chic-15ea3"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "mobile": "chic-15ea3"
+  }
+}

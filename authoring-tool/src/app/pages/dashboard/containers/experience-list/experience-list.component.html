@@ -1,0 +1,15 @@
+
+<div class="row">
+  <app-experience-add
+  class="listItem"
+    (openAddExperience)="onOpenAddExperience()"
+  ></app-experience-add>
+
+  <app-experience-item
+  class="listItem"
+    *ngFor="let experience of experiences$ | async"
+    [experience]="experience"
+    (deleteExperience)="removeItem($event)"
+    (updateExperience)="presentUpdateExperienceModal($event)"
+  ></app-experience-item>
+</div>

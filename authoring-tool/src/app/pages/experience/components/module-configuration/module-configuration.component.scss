@@ -1,0 +1,136 @@
+.panel {
+  // border-radius: 8px;
+  box-shadow: none;
+}
+
+.input {
+  background-color: white;
+  margin-top: 8px;
+  // border-radius: 8px;
+  font-size: 16px;
+}
+
+.locationInput {
+  font-size: 16px;
+  background-color: white;
+  padding: 0 8px !important;
+  line-height: 24px;
+}
+
+.spanInput {
+  font-size: 16px;
+  background-color: white;
+  padding: 0 8px;
+  margin-bottom: 8px;
+  // border-radius: 8px;
+}
+
+.textAreaInput {
+  overflow: auto;
+  max-height: 64px;
+  font-size: 16px;
+}
+
+.textBoxInput {
+  height: 20px;
+}
+
+.numberInput {
+  height: 20px;
+  width: 80px;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  .matSelect {
+    flex-grow: 1;
+    padding-left: 5px;
+    margin-left: 10px;
+  }
+}
+
+.errorMsg {
+  display: block;
+}
+
+.img {
+  max-width: 100%;
+  border: none;
+  margin: auto;
+  max-height: 100%;
+  // border-radius: 8px;
+  // height: 150px;
+}
+
+.selected {
+  background-color: var(--ion-color-purple) !important;
+  .panelTitle {
+    color: white !important;
+  }
+}
+
+.panelHeader:hover {
+  background-color: var(--ion-color-purple) !important;
+  .panelTitle {
+    color: white !important;
+  }
+}
+
+.panelHeader {
+  padding: 0 8px;
+  background-color: white;
+
+  .panelTitle {
+    color: var(--ion-color-purple);
+
+    font-size: 16px;
+  }
+}
+
+.component {
+  display: flex;
+  flex-flow: column;
+  // flex-wrap: wrap;
+  margin-top: 8px;
+}
+
+.imageDiv {
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.fileBtn {
+  --background: white !important;
+  --color: var(--ion-color-purple) !important;
+  font-weight: bold;
+}
+
+.fileBtn:hover {
+  --background: var(--ion-color-purple) !important;
+  --color: white !important;
+  font-weight: bold;
+}
+
+.removeBtn {
+  --background: var(--ion-color-purple) !important;
+  ion-icon {
+    color: white !important;
+  }
+
+  font-weight: bold;
+}
+
+.removeBtn:hover {
+  ion-icon {
+    color: var(--ion-color-purple) !important;
+  }
+  --background: white !important;
+  font-weight: bold;
+}
+
+.spanTitle {
+  text-transform: uppercase;
+}

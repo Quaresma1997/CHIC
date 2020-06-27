@@ -1,0 +1,22 @@
+.titleCompleted {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  ion-icon {
+    color: var(--ion-color-green) !important;
+    font-size: 20px;
+    margin-left: 4px;
+  }
+}
+
+.content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px;
+}
+
+.enterBtn {
+  --background: var(--ion-color-green) !important;
+}

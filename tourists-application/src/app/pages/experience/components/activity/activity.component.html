@@ -1,0 +1,33 @@
+<app-experience-toolbar></app-experience-toolbar>
+<div class="main" *ngIf="activity != null; else loadingActivity">
+  <div
+    class="inside"
+    *ngIf="!activity.blocked || activity.completed; else blockedActivity"
+  >
+    <ion-content class="content">
+      <content-viewer
+        [mod]="module"
+        [setLocation]="location"
+        [act]="activity"
+      ></content-viewer>
+    </ion-content>
+    <ion-button
+      class="nextBtn"
+      (click)="common.completeActivity(this.activity, this.experienceId)"
+      *ngIf="!activity.completed"
+      [disabled]="lockCompletedBtn"
+    >
+      Complete
+    </ion-button>
+  </div>
+</div>
+
+<ng-template #loadingActivity>
+  <div class="main">
+    <span class="errorMsg">Loading activity...</span>
+  </div>
+</ng-template>
+
+<ng-template #blockedActivity>
+  <span class="errorMsg">This activity is locked.</span>
+</ng-template>

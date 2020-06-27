@@ -1,0 +1,42 @@
+  <ion-menu side="start" menuId="first" contentId="main-content" swipeGesture="false" #menu>
+    <ion-header>
+      <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-menu-toggle>
+            <ion-button>
+              <ion-icon class="icon" slot="icon-only" name="close-sharp"></ion-icon>
+            </ion-button>
+          </ion-menu-toggle>
+        </ion-buttons>
+        <ion-title>Menu</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-list>
+        <ion-item lines="none" (click)="goHome()">
+          <!-- <ion-icon class="menuIcon" name="home-sharp" slot="start"></ion-icon> -->
+          <ion-label>Experiences</ion-label>
+        </ion-item>
+        <ion-item lines="none" (click)="goFilter()" disabled>
+          <!-- <ion-icon class="menuIcon" name="funnel-sharp" slot="start"></ion-icon> -->
+          <ion-label>Last experiences</ion-label>
+        </ion-item>
+        <ion-item lines="none" (click)="goFavourites()">
+          <!-- <ion-icon class="menuIcon" name="star-sharp" slot="start"></ion-icon> -->
+          <ion-label>Favourites</ion-label>
+        </ion-item>
+        <ion-item lines="none" (click)="goFilter()">
+          <!-- <ion-icon class="menuIcon" name="funnel-sharp" slot="start"></ion-icon> -->
+          <ion-label>Filters</ion-label>
+        </ion-item>
+        <ion-item lines="none" (click)="goFilter()" disabled>
+          <!-- <ion-icon class="menuIcon" name="funnel-sharp" slot="start"></ion-icon> -->
+          <ion-label>About Us</ion-label>
+        </ion-item>
+        <ion-item lines="none" (click)="goFilter()" disabled>
+          <!-- <ion-icon class="menuIcon" name="funnel-sharp" slot="start"></ion-icon> -->
+          <ion-label>Help</ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-menu>

@@ -1,0 +1,36 @@
+#content {
+  background-color: white;
+  height: 50px;
+  padding: 0 8px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  #search {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    align-items: center;
+    height: 100%;
+
+    ion-searchbar {
+      max-width: 208px;
+      // --background: none;
+      --box-shadow: none;
+      padding: 0 !important;
+
+    }
+  }
+}
+
+.searchBtn {
+  --background: none !important;
+    --box-shadow: none;
+    display: block;
+    color: var(--ion-color-purple);
+    font-size: 20px;
+}
+
+.menuIcon {
+  font-size: 32px;
+}

@@ -1,0 +1,34 @@
+#content {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 16px 0 32px;
+  margin: 16px 0;
+  background-color: var(--ion-color-grey-tint) !important;
+
+  #titleDiv {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+
+    h1 {
+      color: var(--ion-color-green);
+      font-weight: 300;
+      font-size: 40px;
+      margin: 0;
+    }
+  }
+  #search {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    align-items: center;
+    height: 100%;
+
+    ion-searchbar {
+      max-width: 208px;
+      color: var(--ion-color-purple-medium);
+      --box-shadow: none;
+      padding: 0 !important;
+    }
+  }
+}

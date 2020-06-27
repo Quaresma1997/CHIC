@@ -1,0 +1,37 @@
+<app-experience-toolbar></app-experience-toolbar>
+
+<div class="list">
+  <b class="title">{{ (experience$ | async).title }}</b>
+  <ion-content class="content">
+    <app-activity-item
+      *ngFor="let activity of activities"
+      [activity]="activity"
+      [distance]="activity.distance"
+      [blocked]="activity.blocked"
+      [completed]="activity.completed"
+      [experienceId]="(experience$ | async).id"
+      class="activity"
+    ></app-activity-item>
+  </ion-content>
+</div>
+<div class="progressDiv">
+  <div class="progressBar" *ngIf="activities != null">
+    <div class="progressText">
+      <span>
+        {{ (activitiesCompleted$ | async).length }}/{{
+          (allActivities$ | async).length
+        }}
+        activities
+      </span>
+    </div>
+    <div
+      class="insideProgress"
+      [ngStyle]="{
+        'width.%':
+          ((activitiesCompleted$ | async).length /
+            (allActivities$ | async).length) *
+          100
+      }"
+    ></div>
+  </div>
+</div>

@@ -1,0 +1,24 @@
+<div id="main">
+  <app-dashboard-toolbar
+    (searchExperiences)="searchExperiences($event)"
+  ></app-dashboard-toolbar>
+  <ion-content id="content">
+    <!-- <div class="title">
+      <span>Encontra uma <b>aventura</b></span>
+      <img [src]="'assets/imgs/dashPic.svg'" class="image" />
+    </div> -->
+    <div class="title">
+      <span class="titleSpan"
+        >Find a new <span class="adventure">adventure</span></span
+      >
+    </div>
+    <div class="mapDiv">
+      <img
+        src="assets/imgs/experiences-map.png"
+        class="mapBtn"
+        (click)="goToMap()"
+      />
+    </div>
+    <app-experience-list [experiences$]="experiences$"></app-experience-list>
+  </ion-content>
+</div>

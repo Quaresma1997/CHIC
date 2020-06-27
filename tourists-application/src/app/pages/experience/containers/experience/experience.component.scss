@@ -1,0 +1,35 @@
+#main {
+  height: 100%;
+  width: 100%;
+  position: relative;
+
+.tabs {
+  --background: white;
+}}
+
+ion-tab-button {
+  background: white;
+  color: var(--ion-color-purple);
+  ion-icon {
+    font-size: 32px;
+  }
+}
+
+ion-tab-button:hover {
+  background: white;
+  --color-selected: var(--ion-color-green) !important;
+
+  ion-icon {
+    color:var(--ion-color-green) !important;
+  }
+}
+
+
+.tab-selected{
+  background: white;
+  color:var(--ion-color-green) !important;
+
+  ion-icon {
+    color:var(--ion-color-green) !important;
+  }
+}

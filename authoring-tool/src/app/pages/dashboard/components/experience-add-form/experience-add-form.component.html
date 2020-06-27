@@ -1,0 +1,123 @@
+<ion-content class="ion-padding">
+  <ion-toolbar>
+    <ion-title
+      size="large"
+      class="purple"
+      *ngIf="type === 'update'; else elseAdd"
+      >Update Experience</ion-title
+    >
+    <ng-template #elseAdd>
+      <ion-title size="large" class="purple">Create Experience</ion-title>
+    </ng-template>
+    <ion-buttons class="closeButtons" slot="end">
+      <ion-button class="ionCloseButton" (click)="closeModal()">
+        <ion-icon
+          class="closeBtn"
+          name="close-circle-sharp"
+          slot="icon-only"
+        ></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+  <form [formGroup]="form" (ngSubmit)="submitForm()" novalidate>
+    <ion-item lines="none">
+      <ion-label position="floating">Title</ion-label>
+      <ion-input formControlName="title" type="text" required></ion-input>
+    </ion-item>
+    <ion-text
+      color="danger"
+      class="error ion-padding"
+      *ngIf="isSubmitted && errorControl.title.errors?.required"
+    >
+      Title is mandatory!
+    </ion-text>
+    <ion-text
+      color="danger"
+      class="error ion-padding"
+      *ngIf="isSubmitted && errorControl.title.errors?.minlength"
+    >
+      Title should have at least 4 characters.
+    </ion-text>
+
+    <ion-item lines="none">
+      <ion-label position="floating">Description</ion-label>
+      <ion-textarea
+        formControlName="description"
+        type="text"
+        required
+        rows="1"
+      ></ion-textarea>
+    </ion-item>
+    <ion-text
+      color="danger"
+      class="error ion-padding"
+      *ngIf="isSubmitted && errorControl.description.errors?.required"
+    >
+      Description is mandatory!
+    </ion-text>
+    <ion-text
+      color="danger"
+      class="error ion-padding"
+      *ngIf="isSubmitted && errorControl.description.errors?.minlength"
+    >
+      Description should have at least 10 characters.
+    </ion-text>
+
+    <ion-item lines="none">
+      <ion-label position="floating">Tags</ion-label>
+      <ion-input formControlName="tags" type="text" required></ion-input>
+    </ion-item>
+    <ion-text
+      color="danger"
+      class="error ion-padding"
+      *ngIf="isSubmitted && errorControl.tags.errors?.required"
+    >
+      Tags are mandatory!
+    </ion-text>
+    <ion-text
+      color="danger"
+      class="error ion-padding"
+      *ngIf="isSubmitted && errorControl.tags.errors?.minlength"
+    >
+      Tags should have at least 4 characters.
+    </ion-text>
+
+    <ion-item lines="none">
+      <ion-label position="floating">Date</ion-label>
+      <ion-datetime
+        (ionChange)="getDate($event)"
+        formControlName="date"
+        [value]="defaultDate"
+        class="datePicker"
+      ></ion-datetime>
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-label position="stacked">Image</ion-label>
+      <div class="imageContent">
+        <img
+          [defaultImage]="'assets/imgs/picture_placeholder.svg'"
+          [lazyLoad]="imagePath"
+          [src]="imagePath"
+          (click)="fileInput.click()"
+        />
+
+        <input
+          type="file"
+          style="display: none;"
+          accept="image/*"
+          #fileInput
+          (change)="onFileChanged($event)"
+          required
+        />
+
+        <div>
+          <ion-button class="fileBtn" (click)="fileInput.click()"
+            >Choose</ion-button
+          >
+        </div>
+      </div>
+    </ion-item>
+    <ion-button class="btnSubmit" type="submit">Save</ion-button>
+  </form>
+</ion-content>

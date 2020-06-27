@@ -1,0 +1,132 @@
+<div class="main">
+  <div class="toolbar">
+    <ion-menu-button
+      menu="{{ experience.id }}"
+      auto-hide="false"
+      class="menuBtn"
+    ></ion-menu-button>
+    <app-undo-redo class="undoRedo" (closeUpdateForm)="closeUpdateMenu()">
+    </app-undo-redo>
+    <div
+      id="addActivity"
+      class="drag-element-source draggable-module tooltip"
+      [ngClass]="{
+        clickedActivityBtnClass: clickedActivityBtn == true
+      }"
+      #activityCreate
+    >
+      <div #sourceDiv id="sourceDiv" class="sourceDiv">
+        <ion-icon
+          #sourceIcon
+          name="radio-button-on-sharp"
+          id="module-drop"
+          class="drag-element-source draggable-module"
+        ></ion-icon>
+      </div>
+      <span class="spanActivity">Add Activity</span>
+      <span #tooltipmap class="tooltiptext"
+        >Click or drag to the map to create a new activity</span
+      >
+    </div>
+    <div class="setDiv" #activitySelect>
+      <mat-select class="selectSet">
+        <mat-option
+          class="setOption"
+          (click)="createActivitiesFromSet(item)"
+          *ngFor="let item of activitiesSets; let i = index"
+          [value]="item"
+        >
+          <mat-icon
+            svgIcon="{{ activitiesSetsIcons[i] }}"
+            aria-hidden="false"
+            aria-label="Ícone de sequência"
+          ></mat-icon
+          >{{ item }}</mat-option
+        >
+      </mat-select>
+    </div>
+    <div class="toggleClass">
+      <div class="tooltip2">
+        <ion-button
+          #mapButton
+          size="large"
+          class="toggleBtns"
+          (click)="changeViewWithButtons(false)"
+        >
+          <ion-icon [class.faded]="mapView" name="map-sharp"></ion-icon>
+        </ion-button>
+        <span #tooltipmap class="tooltiptext">Change to map view</span>
+      </div>
+
+      <ion-toggle
+        (ionChange)="changeView()"
+        [(ngModel)]="mapView"
+        class="toggle"
+      ></ion-toggle>
+
+      <div class="tooltip2">
+        <ion-button
+          #mapButton
+          size="large"
+          class="toggleBtns"
+          (click)="changeViewWithButtons(true)"
+        >
+          <ion-icon [class.faded]="!mapView" name="grid-sharp"></ion-icon>
+        </ion-button>
+        <span #tooltipmap class="tooltiptext"
+          >Change to canvas view</span
+        >
+      </div>
+
+    </div>
+
+    <div id="toolbarRightMenu">
+      <ion-button
+        size="large"
+        class="toolbarBtn"
+        [disabled]="!(hasChanges$ | async)"
+        (click)="updateExperience(experience)"
+      >
+        <ion-icon class="icon" name="save-outline"></ion-icon>
+        <span class="text" style="text-transform: none !important;"
+          >Save</span
+        >
+      </ion-button>
+      <ion-button size="large" class="toolbarBtn" (click)="previewExperience()">
+        <ion-icon class="icon" name="play-outline"></ion-icon>
+        <span class="text" style="text-transform: none !important;"
+          >Run</span
+        >
+      </ion-button>
+
+      <ion-button
+        size="large"
+        class="toolbarBtn"
+        (click)="publishExperience()"
+        [disabled]="experience.published"
+      >
+        <ion-icon class="icon" name="cloud-upload-outline"></ion-icon>
+        <span class="text" style="text-transform: none !important;"
+          >Publish</span
+        >
+      </ion-button>
+    </div>
+  </div>
+  <div class="mapAndMenuRow">
+    <div class="mapOrCanvas">
+      <ion-content no-padding>
+        <div class="map-container">
+          <div #mapParent class="map-frame">
+            <div #map id="map" class="dropzone"></div>
+          </div>
+        </div>
+      </ion-content>
+    </div>
+    <div class="rightMenu" #rightMenu>
+      <div class="btnDiv" (click)="showHideMenu()">
+        <ion-icon name="ellipsis-vertical-sharp" class="menuIcon"></ion-icon>
+      </div>
+      <ng-template #container></ng-template>
+    </div>
+  </div>
+</div>

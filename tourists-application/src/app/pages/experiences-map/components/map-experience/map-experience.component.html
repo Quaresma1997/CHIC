@@ -1,0 +1,11 @@
+<div class="content">
+  <div class="text">
+    <div class="titleCompleted">
+      <b>{{ experience.title }}</b>
+      <ion-icon *ngIf="experience.completed" name="checkmark-circle-sharp"></ion-icon>
+    </div>
+  </div>
+  <ion-button class="enterBtn" (click)="go()">
+    {{ experienceStateLabel }}
+  </ion-button>
+</div>

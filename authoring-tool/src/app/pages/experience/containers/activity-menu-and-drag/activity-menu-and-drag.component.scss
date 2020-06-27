@@ -1,0 +1,392 @@
+$transitionTime: 0.3s;
+
+.main {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  flex-wrap: wrap;
+  display: flex;
+  background-color: var(--ion-color-light) !important;
+  flex-flow: column;
+
+  .toolbar {
+    //height: 50px;
+    background-color: var(--ion-color-light) !important;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    height: 64px;
+
+    .menuBtn {
+      --color: var(--ion-color-purple) !important;
+      /* --font-size: 30px; */
+      font-size: 30px;
+      margin-left: 16px;
+      margin-right: 32px;
+    }
+
+    .undoRedo {
+      margin-right: 32px;
+    }
+
+    #addActivity:hover {
+      background-color: var(--ion-color-green) !important;
+      #module-drop {
+        color: white !important;
+      }
+      .spanActivity {
+        color: white !important;
+      }
+    }
+    .clickedActivityBtnClass {
+      background-color: var(--ion-color-green) !important;
+      #module-drop {
+        color: white !important;
+      }
+      .spanActivity {
+        color: white !important;
+      }
+    }
+
+    #addActivity {
+      background-color: var(--ion-color-grey-tint);
+      display: flex;
+      // flex-wrap: wrap;
+      // margin: auto;
+      cursor: pointer;
+      // border-radius: 8px;
+
+      padding: 8px;
+
+      #sourceDiv {
+        display: flex;
+        // flex: 40%;
+        height: 100%;
+      }
+
+      #module-drop {
+        height: 24px;
+        width: 24px;
+        margin: auto;
+        color: var(--ion-color-green);
+        --ionicon-stroke-width: 30px;
+      }
+
+      .drag-element-source {
+        position: relative !important;
+      }
+
+      .draggable-module {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        z-index: 11;
+        cursor: pointer;
+
+        -ms-touch-action: none;
+        touch-action: none;
+
+        -webkit-transform: translate(0px, 0px);
+        transform: translate(0px, 0px);
+      }
+
+      .spanActivity {
+        color: var(--ion-color-green);
+        margin: auto;
+        text-transform: uppercase;
+        margin-left: 16px;
+        font-weight: 900;
+      }
+    }
+
+    .setDiv {
+      background-color: var(--ion-color-grey-tint);
+      height: 40px;
+      display: flex;
+      align-items: center;
+      .selectSet {
+        width: 48px;
+
+        height: 100%;
+        // border-radius: 8px;
+        /* text-align: center; */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .selectSet:hover {
+        background-color: var(--ion-color-green) !important;
+      }
+    }
+
+    .tooltip {
+      position: relative;
+      display: block;
+    }
+
+    .tooltip .tooltiptext {
+      visibility: hidden;
+      width: 220px;
+      background-color: black;
+      color: #fff !important;
+      text-align: center;
+      border-radius: 8px;
+      padding: 5px 0;
+
+      /* Position the tooltip */
+      position: absolute;
+      z-index: 1;
+      top: 115%;
+      left: 0;
+    }
+
+    .tooltip .tooltiptext::after {
+      content: "";
+      position: absolute;
+      bottom: 100%;
+      right: 50%;
+      border-width: 5px;
+      border-style: solid;
+      border-color: transparent transparent black transparent;
+    }
+
+    .tooltip:hover .tooltiptext {
+      visibility: visible;
+    }
+
+    #toolbarRightMenu {
+      display: flex;
+      flex-wrap: wrap;
+      width: 366px;
+
+      .toolbarBtn:hover {
+        ion-icon {
+          color: var(--ion-color-purple-medium) !important;
+        }
+
+        span {
+          color: var(--ion-color-purple-medium) !important;
+        }
+      }
+
+      .toolbarBtn {
+        --background: none !important;
+        --padding-start: 0;
+        --padding-end: 0;
+        --box-shadow: none;
+        // border-radius: 8px;
+        padding: 8px 0;
+        cursor: pointer;
+
+        flex: 33%;
+        height: 100%;
+        margin: auto;
+        // color: white;
+        // background-color: rgb(0, 0, 0);
+
+        .icon {
+          margin-right: 5px;
+          color: var(--ion-color-purple) !important;
+        }
+
+        .text {
+          letter-spacing: 0;
+          color: var(--ion-color-purple) !important;
+        }
+      }
+    }
+  }
+
+  .mapAndMenuRow {
+    display: flex;
+    flex-wrap: wrap;
+    height: 100%;
+    width: 100%;
+    .mapOrCanvas {
+      flex-grow: 1;
+
+      .dropzone {
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+        background-color: #eeeeee !important;
+      }
+
+      .btnDeleteActivity {
+        position: absolute;
+        right: 0;
+        top: 10px;
+        z-index: 7;
+      }
+
+      .deleteBtn {
+        position: relative;
+      }
+    }
+
+    .rightMenu {
+      width: 368px;
+      position: relative;
+
+      -moz-transition: width $transitionTime;
+      -ms-transition: width $transitionTime;
+      -o-transition: width $transitionTime;
+      -webkit-transition: width $transitionTime;
+      transition: width $transitionTime;
+      // overflow: hidden;
+    }
+
+    .rightMenuHide {
+      width: 0;
+      position: relative;
+      // visibility: hidden;
+    }
+  }
+}
+
+.map-container {
+  height: 100%;
+}
+
+.map-frame {
+  // border: 2px solid black;
+  border-left: 0;
+  height: 100%;
+}
+
+#map {
+  width: 100%;
+  height: 100%;
+
+  .leaflet-pane {
+    z-index: -1 !important;
+  }
+}
+
+.disabledDiv {
+  pointer-events: none;
+  opacity: 0.4;
+}
+
+.centerIcon {
+  width: 18px;
+  height: 18px;
+  color: var(--ion-color-purple) !important;
+}
+
+.viewRow {
+  display: flex;
+  flex-wrap: wrap;
+  flex-flow: column;
+  justify-content: center;
+  height: 100%;
+}
+
+.modalClass .modal-wrapper {
+  height: 250px;
+  width: 400px;
+}
+
+.toggleClass {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  margin: auto;
+
+  .toggle {
+    --background: var(--ion-color-purple);
+    --background-checked: var(--ion-color-purple-medium);
+    --handle-background-checked: #ffffff;
+    --handle-box-shadow: 2px;
+  }
+
+  .toggleBtns {
+    --background: none !important;
+    --padding-start: 0;
+    --padding-end: 0;
+    --box-shadow: none;
+    margin-top: 0;
+    color: black;
+  }
+
+  .tooltip2 {
+    position: relative;
+    display: block;
+  }
+
+  .tooltip2 .tooltiptext {
+    visibility: hidden;
+    width: 220px;
+    background-color: black;
+    color: #fff !important;
+    text-align: center;
+    border-radius: 8px;
+    padding: 5px 0;
+
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+    top: 100%;
+    right: -380%;
+  }
+
+  .tooltip2 .tooltiptext::after {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    right: 50%;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent black transparent;
+  }
+
+  .tooltip2:hover .tooltiptext {
+    visibility: visible;
+  }
+}
+
+.btnDiv {
+  position: absolute;
+  z-index: 1;
+  left: -24px;
+  top: 43%;
+  border-radius: 4px 0px 0px 4px;
+  background-color: var(--ion-color-grey-tint);
+  width: 24px;
+  height: 80px;
+
+  cursor: pointer;
+}
+
+.menuIcon {
+  font-size: 40px;
+  position: absolute;
+  top: 20px;
+  right: -8px;
+  color: var(--ion-color-purple-medium) !important;
+}
+
+.btnShow {
+  --background: none !important;
+  --padding-start: 0;
+  --padding-end: 0;
+  --box-shadow: none;
+  margin-top: 32px;
+}
+
+.faded {
+  color: var(--ion-color-purple-medium) !important;
+}
+
+.hoveredCreateActivity {
+  background-color: var(--ion-color-green) !important;
+  #module-drop {
+    color: white !important;
+  }
+  .spanActivity {
+    color: white !important;
+  }
+}

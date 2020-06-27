@@ -1,0 +1,40 @@
+<div class="mainDiv">
+  <img
+    *ngIf="completed; else elseImg"
+    class="image"
+    [src]="'assets/imgs/trophy.svg'"
+    [alt]="'Experience completed!'"
+  />
+
+  <ng-template #elseImg>
+    <img
+      class="image"
+      [src]="'assets/imgs/flag.svg'"
+      [alt]="'Experience partially completed!'"
+    />
+  </ng-template>
+  <div class="congratsDiv" *ngIf="!completed">
+    <b class="congratsTitle">Congratulations!</b>
+    <span class="congratsText"
+      >We hope you enjoyed the journey!<br /><br />
+      This experience has ended but it's not done yet. You can explore other activities or restart the experience.
+    </span>
+  </div>
+
+  <div class="congratsDiv" *ngIf="completed">
+    <b class="congratsTitle">Hurray!!!</b>
+    <span class="congratsText"
+      >You completed the experience at 100%!<br /><br />
+      This experience fully complete, but you can restart it. We hope to see you soon.
+    </span>
+  </div>
+
+  <div class="btns">
+    <ion-button (click)="leave(false)" class="continueBtn" *ngIf="!completed">
+      Continue
+    </ion-button>
+    <ion-button (click)="leave(true)" class="leaveBtn">
+      Leave
+    </ion-button>
+  </div>
+</div>

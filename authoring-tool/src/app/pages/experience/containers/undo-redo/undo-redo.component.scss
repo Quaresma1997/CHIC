@@ -1,0 +1,12 @@
+ ion-button {
+    --background: none !important;
+    --padding-start: 0;
+    --padding-end: 0;
+    --box-shadow: none;
+    color: black;
+    font-size: 15px;
+
+    ion-icon {
+      color: var(--ion-color-green);
+    }
+  }

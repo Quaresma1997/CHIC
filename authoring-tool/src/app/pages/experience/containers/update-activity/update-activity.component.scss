@@ -1,0 +1,361 @@
+ion-content {
+  ion-title {
+    padding: 0;
+    font-weight: bold;
+    font-size: 16px;
+    text-transform: uppercase;
+  }
+
+  .panel {
+    margin-bottom: 16px;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .titleDiv {
+    display: flex;
+    margin-bottom: 16px;
+
+    ion-icon {
+      cursor: pointer;
+      font-size: 20px;
+    }
+  }
+
+  .selected {
+    background-color: var(--ion-color-purple) !important;
+    .panelTitle {
+      color: white !important;
+    }
+  }
+
+  .panelHeader:hover {
+    background-color: var(--ion-color-purple) !important;
+    .panelTitle {
+      color: white !important;
+    }
+  }
+
+  .panelHeader {
+    background-color: var(--ion-color-grey-shade);
+    padding: 0 8px;
+    .panelTitle {
+      color: var(--ion-color-purple);
+      font-weight: 900;
+      font-size: 16px;
+      text-transform: uppercase;
+    }
+  }
+
+  .input {
+    background-color: white;
+    height: 32px;
+    // border-radius: 8px;
+  }
+
+  #idDiv {
+    margin-top: 10px !important;
+    background-color: var(--ion-color-grey-tint);
+
+    .activityNameInput {
+      margin: 8px 0 16px 0;
+    }
+
+    .streetDiv {
+      margin-top: 8px;
+      display: flex;
+      ion-searchbar {
+        --background: none;
+        --box-shadow: none;
+        padding-left: 0;
+      }
+    }
+
+    .searchResults {
+      max-height: 100px;
+      overflow: auto;
+      margin-left: 30px;
+      padding-top: 0;
+      ion-item {
+        cursor: pointer;
+        --ion-background-color: #ffffff;
+      }
+
+      ion-item:hover {
+        --ion-background-color: #dddddd;
+      }
+    }
+
+    .selectedAddress {
+      font-size: 16px;
+      margin-top: 8px;
+      background-color: #ffffff;
+    }
+
+    .mapImage {
+      min-width: 100%;
+    }
+
+    #tagsDiv {
+      margin-top: 16px;
+      .tagsInput {
+        margin-top: 10px;
+      }
+    }
+
+    #colorDiv {
+      margin: 16px 0;
+      .colorPicker {
+        margin-left: 20px;
+        width: 50px;
+        height: 20px;
+        cursor: pointer;
+        // border-radius: 8px;
+      }
+    }
+
+    .colorsCheckDiv {
+      height: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      // justify-content: space-between;
+    }
+
+    .b {
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+
+    .startsHereDiv {
+      height: 100%;
+      margin-top: 16px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .lbl {
+      color: black !important;
+      margin: 0;
+      margin-right: 16px;
+    }
+  }
+
+  #modulesDiv {
+    margin-top: 20px !important;
+
+    #filterInput {
+      border-bottom: 1px solid !important;
+      margin-bottom: 10px;
+    }
+
+    #modulesZone {
+      height: 160px;
+      overflow: auto;
+      display: flex;
+      flex-wrap: wrap;
+      // justify-content: space-between;
+      margin-bottom: 10px;
+    }
+
+    .module {
+      width: 48px;
+      height: 48px;
+      margin-right: 8px;
+      margin-bottom: 5px;
+      display: inline-block;
+      cursor: pointer;
+    }
+    #moduleDescription {
+      height: 128px;
+      background-color: white;
+      padding: 8px;
+      // border-radius: 8px;
+      overflow: auto;
+      font-size: 16px;
+    }
+
+    .selected {
+      filter: brightness(50%);
+    }
+  }
+
+  #contentDiv {
+    margin-top: 10px !important;
+  }
+
+  #connectionsDiv {
+    margin-top: 10px !important;
+
+    .innerRow {
+      display: flex;
+      flex-wrap: wrap;
+      min-height: 40px;
+      margin-top: 10px;
+      align-items: center;
+      .innerLabel {
+        flex: 25%;
+        // background-color: purple;
+      }
+
+      .selectables {
+        flex: 75%;
+        // background-color: peru;
+
+        .addIcon {
+          cursor: pointer;
+          max-width: 20px;
+
+          ion-icon {
+            cursor: pointer;
+            font-size: 24px;
+            --ionicon-stroke-width: 40px !important;
+          }
+        }
+      }
+    }
+  }
+
+  #requirementsDiv {
+    margin-top: 10px !important;
+    .col {
+      display: flex;
+      flex-direction: column;
+
+      .row {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        height: 45px;
+
+        #proximity {
+          display: flex;
+          flex-wrap: wrap;
+          margin-bottom: 5px;
+          align-items: center;
+          // width: 70%;
+          #proximityInput {
+            background-color: white;
+            // border-radius: 8px;
+            // height: 20px;
+            // padding: 8px !important;
+            text-align: center;
+            margin-right: 8px;
+            font-size: 16px;
+            width: 120px;
+          }
+        }
+        #schedule {
+          display: flex;
+          flex-wrap: wrap;
+          margin-bottom: 5px;
+          align-items: center;
+          .toSpan {
+            margin-right: 5px;
+          }
+
+          .hSpan {
+            margin-left: 5px;
+          }
+          .matSelect {
+            text-align: center;
+            background-color: white;
+            // border-radius: 8px;
+            width: 64px;
+            mat-select {
+              padding: 8px;
+            }
+          }
+        }
+        #days {
+          width: 178px;
+          .matSelect {
+            text-align: center;
+            background-color: white;
+            padding-left: 5px;
+            // border-radius: 8px;
+            mat-select {
+              padding: 8px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.bottomDiv {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-top: 16px;
+
+  .otherBtn {
+    --background: var(--ion-color-grey-tint) !important;
+    --color: var(--ion-color-purple) !important;
+  }
+
+  .saveBtn {
+    --background: var(--ion-color-purple) !important;
+    --color: white !important;
+  }
+
+  .otherBtn:hover {
+    --background: var(--ion-color-purple) !important;
+    --color: white !important;
+  }
+
+  .saveBtn:hover {
+    --background: var(--ion-color-grey-tint) !important;
+    --color: var(--ion-color-purple) !important;
+  }
+
+  .bottomBtn {
+    height: 32px;
+    width: 100px;
+
+    font-weight: bold;
+  }
+}
+
+::ng-deep .okBtn {
+  background-color: #0275d8;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+::ng-deep .button-area {
+  padding: 0 20px 10px !important;
+}
+
+::ng-deep .hex-text {
+  padding: 0 24px 1px 8px !important;
+}
+
+.chk {
+  --background-checked: var(--ion-color-purple-medium) !important;
+  --border-color: var(--ion-color-purple-medium) !important;
+  --border-color-checked: var(--ion-color-purple-medium);
+}
+
+.closeBtn {
+  font-size: 24px !important;
+}
+
+.upper {
+  text-transform: uppercase;
+}
+
+.sp {
+  display: block;
+  text-transform: uppercase;
+}

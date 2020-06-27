@@ -1,0 +1,369 @@
+<form
+  novalidate
+  *ngIf="moduleConfig != null; else elseBlock"
+  [formGroup]="myFormGroup"
+>
+  <mat-accordion>
+    <mat-expansion-panel
+      class="panel"
+      *ngIf="textAreaConfig.length > 0"
+      #panel1
+    >
+      <mat-expansion-panel-header
+        class="panelHeader"
+        [collapsedHeight]="'32px'"
+        [expandedHeight]="'32px'"
+        [class.selected]="panel1.expanded"
+      >
+        <mat-panel-title class="mat-panel-title panelTitle">
+          Textarea
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <ng-template matExpansionPanelContent>
+        <div *ngFor="let form_elem of textAreaConfig" class="component">
+          <span class="spanTitle">{{ form_elem.label | titlecase }}</span>
+          <ion-textarea
+            class="input textAreaInput"
+            rows="1"
+            placeholder="{{ form_elem.placeholder }}"
+            (ionFocus)="removeDeleteListeners.emit()"
+            (ionBlur)="createDeleteListeners.emit()"
+            formControlName="{{ form_elem.label }}"
+          ></ion-textarea>
+          <!-- <ion-text
+            color="danger"
+            class="error ion-padding"
+            *ngIf="isSubmitted && checkFilled(form_elem.label)"
+          >
+            O campo {{ form_elem.label }} é obrigatório.
+          </ion-text> -->
+        </div>
+      </ng-template>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel class="panel" *ngIf="textBoxConfig.length > 0" #panel2>
+      <mat-expansion-panel-header
+        class="panelHeader"
+        [collapsedHeight]="'32px'"
+        [expandedHeight]="'32px'"
+        [class.selected]="panel2.expanded"
+      >
+        <mat-panel-title class="mat-panel-title panelTitle">
+          Text
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <ng-template matExpansionPanelContent>
+        <div *ngFor="let form_elem of textBoxConfig" class="component">
+          <span class="spanTitle">{{ form_elem.label | titlecase }}</span>
+          <ion-input
+            id="activityNameInput"
+            class="input textBoxInput"
+            clearInput
+            placeholder="{{ form_elem.placeholder }}"
+            (ionFocus)="removeDeleteListeners.emit()"
+            (ionBlur)="createDeleteListeners.emit()"
+            formControlName="{{ form_elem.label }}"
+          ></ion-input>
+          <!-- <ion-text
+            color="danger"
+            class="error ion-padding"
+            *ngIf="isSubmitted && checkFilled(form_elem.label)"
+          >
+            O campo {{ form_elem.label }} é obrigatório.
+          </ion-text> -->
+        </div>
+      </ng-template>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel class="panel" *ngIf="numberConfig.length > 0" #panel3>
+      <mat-expansion-panel-header
+        class="panelHeader"
+        [collapsedHeight]="'32px'"
+        [expandedHeight]="'32px'"
+        [class.selected]="panel3.expanded"
+      >
+        <mat-panel-title class="mat-panel-title panelTitle">
+          Number
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <ng-template matExpansionPanelContent>
+        <div *ngFor="let form_elem of numberConfig" class="component">
+          <span class="spanTitle">{{ form_elem.label | titlecase }}</span>
+          <ion-input
+            id="activityNameInput"
+            class="input numberInput"
+            type="number"
+            placeholder="{{ form_elem.placeholder }}"
+            max="10000"
+            min="0"
+            (ionFocus)="removeDeleteListeners.emit()"
+            (ionBlur)="createDeleteListeners.emit()"
+            formControlName="{{ form_elem.label }}"
+          ></ion-input>
+          <!-- <ion-text
+            color="danger"
+            class="error ion-padding"
+            *ngIf="isSubmitted && checkFilled(form_elem.label)"
+          >
+            O campo {{ form_elem.label }} é obrigatório.
+          </ion-text> -->
+        </div>
+      </ng-template>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel class="panel" *ngIf="selectConfig.length > 0" #panel4>
+      <mat-expansion-panel-header
+        class="panelHeader"
+        [collapsedHeight]="'32px'"
+        [expandedHeight]="'32px'"
+        [class.selected]="panel4.expanded"
+      >
+        <mat-panel-title class="mat-panel-title panelTitle">
+          Select list
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <ng-template matExpansionPanelContent>
+        <div *ngFor="let form_elem of selectConfig" class="component">
+          <span class="spanTitle">{{ form_elem.label | titlecase }}</span>
+          <mat-select
+            class="input"
+            formControlName="{{ form_elem.label }}"
+            multiple
+          >
+            <mat-option *ngFor="let opt of form_elem.options" [value]="opt">{{
+              opt
+            }}</mat-option>
+          </mat-select>
+
+          <!-- <ion-text
+            color="danger"
+            class="error ion-padding"
+            *ngIf="isSubmitted && checkFilled(form_elem.label)"
+          >
+            O campo {{ form_elem.label }} é obrigatório.
+          </ion-text> -->
+        </div>
+      </ng-template>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel class="panel" *ngIf="imageConfig.length > 0" #panel5>
+      <mat-expansion-panel-header
+        class="panelHeader"
+        [collapsedHeight]="'32px'"
+        [expandedHeight]="'32px'"
+        [class.selected]="panel5.expanded"
+      >
+        <mat-panel-title class="mat-panel-title panelTitle">
+          Image
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <ng-template matExpansionPanelContent>
+        <div *ngFor="let form_elem of imageConfig" class="component">
+          <span class="spanTitle">{{ form_elem.label | titlecase }}</span>
+          <div (click)="fileInput.click()" class="imageDiv" *ngIf="imageInfos[form_elem.label]">
+            <img
+              [defaultImage]="'assets/imgs/picture_placeholder.svg'"
+              [lazyLoad]="imageInfos[form_elem.label].url"
+              [alt]="imageInfos[form_elem.label].name"
+              *ngIf="imageInfos[form_elem.label] != null"
+              class="img"
+              
+            />
+          </div>
+
+          <div class="spanInput">
+            <span *ngIf="imageInfos[form_elem.label] != null">{{
+              imageInfos[form_elem.label].name
+            }}</span>
+          </div>
+          <input
+            formControlName="{{ form_elem.label }}"
+            [attr.data-label]="form_elem.label"
+            [attr.data-type]="'image'"
+            style="display: none;"
+            type="file"
+            accept="image/*"
+            #fileInput
+            (change)="onFileChanged($event, fileInput)"
+          />
+          <div class="fileBtns">
+            <ion-button class="fileBtn" (click)="fileInput.click()"
+              >Choose</ion-button
+            >
+            <ion-button
+              class="removeBtn"
+              (click)="removeFile('image', form_elem.label, fileInput)"
+              ><ion-icon name="close-sharp"></ion-icon
+            ></ion-button>
+          </div>
+          <!-- <button (click)="onUpload()">Upload!</button> -->
+          <!-- <ion-text
+            color="danger"
+            class="error ion-padding errorMsg"
+            *ngIf="isSubmitted && checkFilled(form_elem.label, form_elem.type)"
+          >
+            O campo {{ form_elem.label }} é obrigatório.
+          </ion-text> -->
+        </div>
+      </ng-template>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel class="panel" *ngIf="videoConfig.length > 0" #panel6>
+      <mat-expansion-panel-header
+        class="panelHeader"
+        [collapsedHeight]="'32px'"
+        [expandedHeight]="'32px'"
+        [class.selected]="panel6.expanded"
+      >
+        <mat-panel-title class="mat-panel-title panelTitle">
+          Video
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <ng-template matExpansionPanelContent>
+        <div *ngFor="let form_elem of videoConfig" class="component">
+          <span class="spanTitle">{{ form_elem.label | titlecase }}</span>
+          <div class="spanInput">
+            <span *ngIf="videoInfos[form_elem.label] != null">{{
+              videoInfos[form_elem.label].name
+            }}</span>
+          </div>
+          <input
+            formControlName="{{ form_elem.label }}"
+            [attr.data-label]="form_elem.label"
+            [attr.data-type]="'video'"
+            style="display: none;"
+            type="file"
+            accept="video/*"
+            #fileInput
+            (change)="onFileChanged($event, fileInput)"
+          />
+          <div class="fileBtns">
+            <ion-button class="fileBtn" (click)="fileInput.click()"
+              >Choose</ion-button
+            >
+            <ion-button
+              class="removeBtn"
+              (click)="removeFile('video', form_elem.label, fileInput)"
+              ><ion-icon name="close-sharp"></ion-icon
+            ></ion-button>
+          </div>
+          <!-- <button (click)="onUpload()">Upload!</button> -->
+          <!-- <ion-text
+            color="danger"
+            class="error ion-padding errorMsg"
+            *ngIf="isSubmitted && checkFilled(form_elem.label, form_elem.type)"
+          >
+            O campo {{ form_elem.label }} é obrigatório.
+          </ion-text> -->
+        </div>
+      </ng-template>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel class="panel" *ngIf="audioConfig.length > 0" #panel7>
+      <mat-expansion-panel-header
+        class="panelHeader"
+        [collapsedHeight]="'32px'"
+        [expandedHeight]="'32px'"
+        [class.selected]="panel7.expanded"
+      >
+        <mat-panel-title class="mat-panel-title panelTitle">
+          Audio
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <ng-template matExpansionPanelContent>
+        <div *ngFor="let form_elem of audioConfig" class="component">
+          <span class="spanTitle">{{ form_elem.label | titlecase }}</span>
+          <div class="spanInput">
+            <span *ngIf="audioInfos[form_elem.label] != null">{{
+              audioInfos[form_elem.label].name
+            }}</span>
+          </div>
+          <input
+            formControlName="{{ form_elem.label }}"
+            [attr.data-label]="form_elem.label"
+            [attr.data-type]="'audio'"
+            style="display: none;"
+            type="file"
+            accept="audio/*"
+            #fileInput
+            (change)="onFileChanged($event, fileInput)"
+          />
+          <div class="fileBtns">
+            <ion-button class="fileBtn" (click)="fileInput.click()"
+              >Choose</ion-button
+            >
+            <ion-button
+              class="removeBtn"
+              (click)="removeFile('audio', form_elem.label, fileInput)"
+              ><ion-icon name="close-sharp"></ion-icon
+            ></ion-button>
+          </div>
+          <!-- <button (click)="onUpload()">Upload!</button> -->
+          <!-- <ion-text
+            color="danger"
+            class="error ion-padding errorMsg"
+            *ngIf="isSubmitted && checkFilled(form_elem.label, form_elem.type)"
+          >
+            O campo {{ form_elem.label }} é obrigatório.
+          </ion-text> -->
+        </div>
+      </ng-template>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel
+      class="panel"
+      *ngIf="locationConfig.length > 0"
+      #panel8
+    >
+      <mat-expansion-panel-header
+        class="panelHeader"
+        [collapsedHeight]="'32px'"
+        [expandedHeight]="'32px'"
+        [class.selected]="panel8.expanded"
+      >
+        <mat-panel-title class="mat-panel-title panelTitle">
+          Location
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <ng-template matExpansionPanelContent>
+        <div *ngFor="let location of locationConfig" class="component">
+          <span class="spanTitle">{{ location.label | titlecase }}</span>
+          <div class="fileBtns">
+            <ion-button class="fileBtn" (click)="selectLocation(location.label)"
+              >Choose</ion-button
+            >
+            <ion-button
+              class="removeBtn"
+              (click)="removeLocation(location.label)"
+              ><ion-icon name="close-sharp"></ion-icon
+            ></ion-button>
+          </div>
+          <ion-input class="locationInput" *ngIf="locations[location.label] != null"
+            >Latitude: {{ locations[location.label].lat }}<br>Longitude:
+            {{ locations[location.label].lng }}
+          </ion-input>
+          <!-- <ion-text
+            color="danger"
+            class="error ion-padding"
+            *ngIf="isSubmitted && checkFilled(form_elem.label)"
+          >
+            O campo {{ form_elem.label }} é obrigatório.
+          </ion-text> -->
+        </div>
+      </ng-template>
+    </mat-expansion-panel>
+  </mat-accordion>
+</form>
+<ng-template #elseBlock
+  ><span class="elseModule"
+    >This module doesn't have a configuration associated.</span
+  ></ng-template
+>

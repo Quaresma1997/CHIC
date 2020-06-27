@@ -1,0 +1,8 @@
+{
+  "appId": "com.chic.touristsapplication",
+  "appName": "Tourists Application",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www",
+  "cordova": {}
+}

@@ -1,0 +1,364 @@
+<ion-content class="ion-padding">
+  <div class="titleDiv">
+    <ion-title class="purple">{{
+      activity.title
+    }}</ion-title>
+    <ion-icon
+      size="medium"
+      (click)="closeThis()"
+      name="close-circle-sharp"
+      class="closeBtn"
+      slot="icon-only"
+    ></ion-icon>
+  </div>
+  <mat-accordion>
+    <mat-expansion-panel class="panel" #panel>
+      <mat-expansion-panel-header
+        class="panelHeader"
+        [collapsedHeight]="'32px'"
+        [expandedHeight]="'32px'"
+        [class.selected]="panel.expanded"
+      >
+        <mat-panel-title class="mat-panel-title panelTitle">
+          Information
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <ng-template matExpansionPanelContent>
+        <div id="idDiv">
+          <span class="upper">Title</span>
+          <ion-input
+            id="activityNameInput"
+            class="input activityNameInput"
+            clearInput
+            placeholder="New Activity"
+            (ionFocus)="removeDeleteListeners.emit()"
+            (ionBlur)="createDeleteListeners.emit()"
+            [(ngModel)]="activityName"
+          ></ion-input>
+          <span class="upper">Place</span>
+          <div class="streetDiv">
+            <!-- <ion-icon name="location" slot="icon-only"></ion-icon> -->
+            <ion-searchbar
+              type="text"
+              debounce="500"
+              class="input"
+              placeholder="Search address"
+              (ionChange)="getAddresses($event)"
+              (ionFocus)="removeDeleteListeners.emit()"
+              (ionBlur)="createDeleteListeners.emit()"
+              [ngModel]="query"
+            ></ion-searchbar>
+          </div>
+          <ng-container *ngIf="query.length > 0">
+            <ion-list
+              *ngIf="!loadingAddresses; else loading"
+              class="searchResults"
+            >
+              <ng-container *ngIf="resultAddresses.length > 0; else noItems">
+                <ion-item
+                  [attr.data-lat]="result.lat"
+                  [attr.data-lng]="result.lng"
+                  *ngFor="let result of resultAddresses"
+                  (click)="selectAddress($event)"
+                  >{{ result.address }}</ion-item
+                >
+              </ng-container>
+              <ng-template #noItems>No addresses found!</ng-template>
+            </ion-list>
+            <ng-template #loading>Loading addresses...</ng-template>
+          </ng-container>
+
+          <ion-input
+            class="selectedAddress"
+            [disabled]="true"
+            [ngModel]="address"
+          ></ion-input>
+
+          <div id="tagsDiv">
+            <span class="upper">Tags</span>
+            <ion-input
+              class="tagsInput input"
+              clearInput
+              placeholder="Tags"
+              (ionFocus)="removeDeleteListeners.emit()"
+              (ionBlur)="createDeleteListeners.emit()"
+              [(ngModel)]="tags"
+            ></ion-input>
+          </div>
+          <div id="colorDiv">
+            <span class="upper">Colour</span>
+            <input
+              class="colorPicker"
+              [cpPosition]="'top'"
+              [cpOKButton]="true"
+              [cpSaveClickOutside]="false"
+              [cpOKButtonClass]="'okBtn'"
+              [(colorPicker)]="pinColor"
+              [style.background]="pinColor"
+            />
+          </div>
+          <div class="colorsCheckDiv">
+            <span class="lbl upper">Assign colour to following</span>
+            <ion-checkbox
+              class="chk"
+              [(ngModel)]="isColorForChildren"
+            ></ion-checkbox>
+          </div>
+          <div class="startsHereDiv">
+            <span class="lbl upper">Starts here</span>
+            <ion-checkbox
+              class="chk"
+              [(ngModel)]="isStartsHereChecked"
+            ></ion-checkbox>
+          </div>
+          <div class="startsHereDiv">
+            <span class="lbl upper">Ends here</span>
+            <ion-checkbox
+              class="chk"
+              [(ngModel)]="isEndsHereChecked"
+            ></ion-checkbox>
+          </div>
+        </div>
+      </ng-template>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel class="panel" #panel2>
+      <mat-expansion-panel-header
+        class="panelHeader"
+        [collapsedHeight]="'32px'"
+        [expandedHeight]="'32px'"
+        [class.selected]="panel2.expanded"
+      >
+        <mat-panel-title class="mat-panel-title panelTitle">
+          Modules
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <ng-template matExpansionPanelContent>
+        <div id="modulesDiv">
+          <div id="modulesZone">
+            <app-module
+              class="module"
+              [module]="module"
+              *ngFor="let module of modules$ | async"
+              (click)="selectModule(module)"
+              [selected]="selectedModuleId === module.id"
+            ></app-module>
+          </div>
+          <div id="moduleDescription">
+            <span
+              class="descriptionText"
+              *ngIf="selectedModule != null; else elseBlock"
+              >{{ selectedModule.description }}</span
+            >
+            <ng-template #elseBlock
+              ><span class="descriptionText"
+                >Module description.</span
+              ></ng-template
+            >
+          </div>
+        </div>
+      </ng-template>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel class="panel" #panel3>
+      <mat-expansion-panel-header
+        class="panelHeader"
+        [collapsedHeight]="'32px'"
+        [expandedHeight]="'32px'"
+        [class.selected]="panel3.expanded"
+      >
+        <mat-panel-title class="mat-panel-title panelTitle">
+          Content
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <ng-template matExpansionPanelContent>
+        <div id="contentDiv">
+          <app-module-configuration
+            *ngIf="selectedModule != null; else moduleElse"
+            [moduleConfig]="selectedModule.htmlConfig"
+            [moduleData]="moduleData"
+            [coords]="coords"
+            [moduleDataChange]="moduleDataChange"
+            (createDeleteListeners)="callCreateDelete()"
+            (removeDeleteListeners)="callRemoveDelete()"
+          ></app-module-configuration>
+          <ng-template #moduleElse
+            ><span class="elseModule">Select a module.</span></ng-template
+          >
+        </div>
+      </ng-template>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel class="panel" #panel5>
+      <mat-expansion-panel-header
+        class="panelHeader"
+        [collapsedHeight]="'32px'"
+        [expandedHeight]="'32px'"
+        [class.selected]="panel5.expanded"
+      >
+        <mat-panel-title class="mat-panel-title panelTitle">
+          Requirements
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <ng-template matExpansionPanelContent>
+        <div id="requirementsDiv">
+          <div class="col">
+            <div class="row">
+              <span class="sp">Proximity</span>
+              <div id="proximity">
+                <ion-input
+                  id="proximityInput"
+                  type="number"
+                  placeholder="0"
+                  min="0"
+                  (ionFocus)="removeDeleteListeners.emit()"
+                  (ionBlur)="createDeleteListeners.emit()"
+                  [(ngModel)]="proximity"
+                ></ion-input>
+                <span>meters</span>
+              </div>
+            </div>
+            <div class="row">
+              <span class="sp">Schedule</span>
+              <div id="schedule">
+                <div class="matSelect">
+                  <mat-select [(ngModel)]="startHour">
+                    <mat-option
+                      *ngFor="let item of [].constructor(24); let i = index"
+                      [disabled]="i > endHour"
+                      [value]="i"
+                      >{{ i }}</mat-option
+                    >
+                  </mat-select>
+                </div>
+                <span class="toSpan hSpan">h to</span>
+                <div class="matSelect">
+                  <mat-select [(ngModel)]="endHour">
+                    <mat-option
+                      *ngFor="let item of [].constructor(24); let i = index"
+                      [disabled]="i < startHour"
+                      [value]="i"
+                      >{{ i }}</mat-option
+                    >
+                  </mat-select>
+                </div>
+                <span class="hSpan">h</span>
+                <!-- <span class="sp">Não realizar</span>
+    <span class="sp">Realizar</span> -->
+              </div>
+            </div>
+            <div class="row">
+              <span class="sp">Days</span>
+              <div id="days">
+                <div class="matSelect">
+                  <mat-select [formControl]="daysFormControl" multiple>
+                    <mat-option
+                      *ngFor="let day of weekDays; let i = index"
+                      [value]="day"
+                      >{{ day }}</mat-option
+                    >
+                  </mat-select>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel class="panel" #panel4>
+      <mat-expansion-panel-header
+        class="panelHeader"
+        [collapsedHeight]="'32px'"
+        [expandedHeight]="'32px'"
+        [class.selected]="panel4.expanded"
+      >
+        <mat-panel-title class="mat-panel-title panelTitle">
+          Connections
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <ng-template matExpansionPanelContent>
+        <div #modules>
+          <div id="connectionsDiv">
+            <div class="innerRow">
+              <div class="innerLabel">
+                <span class="sp">From</span>
+              </div>
+              <div
+                #fromDiv
+                class="selectables"
+                *ngIf="finalConnectionsTarget != null"
+              >
+                <div class="addIcon">
+                  <ion-icon
+                    *ngIf="objectKeys(finalConnectionsTarget).length === 0"
+                    (click)="createConnectionTarget()"
+                    name="add-circle-outline"
+                  ></ion-icon>
+                </div>
+                <app-select-activity
+                  *ngFor="let key of objectKeys(finalConnectionsTarget)"
+                  [connection]="finalConnectionsTarget[key]"
+                  [type]="0"
+                  [selectedActivityId]="finalConnectionsTarget[key].sourceId"
+                  [possibleActivities]="sourcesInUseForThisTarget"
+                  [activities]="activities"
+                  (addConnection)="addConnectionToTarget($event)"
+                  [numberOfConnections]="numberOfConnectionsTarget"
+                  (createConnection)="createConnectionTarget()"
+                  (deleteConnection)="deleteConnectionTarget($event)"
+                ></app-select-activity>
+              </div>
+            </div>
+            <div class="innerRow">
+              <div class="innerLabel">
+                <span class="sp">To</span>
+              </div>
+              <div
+                #fromDiv
+                class="selectables"
+                *ngIf="finalConnectionsSource != null"
+              >
+                <div class="addIcon">
+                  <ion-icon
+                    *ngIf="objectKeys(finalConnectionsSource).length === 0"
+                    (click)="createConnectionSource()"
+                    name="add-circle-outline"
+                  ></ion-icon>
+                </div>
+                <app-select-activity
+                  *ngFor="let key of objectKeys(finalConnectionsSource)"
+                  [connection]="finalConnectionsSource[key]"
+                  [type]="1"
+                  [selectedActivityId]="finalConnectionsSource[key].sourceId"
+                  [possibleActivities]="targetsInUseForThisSource"
+                  [activities]="activities"
+                  (addConnection)="addConnectionToSource($event)"
+                  [numberOfConnections]="numberOfConnectionsSource"
+                  (createConnection)="createConnectionSource()"
+                  (deleteConnection)="deleteConnectionSource($event)"
+                ></app-select-activity>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+    </mat-expansion-panel>
+  </mat-accordion>
+  <div class="bottomDiv">
+    <ion-button (click)="remove()" class="bottomBtn otherBtn"
+      >Delete</ion-button
+    >
+    <ion-button (click)="previewActivity()" class="bottomBtn otherBtn"
+      >Preview</ion-button
+    >
+    <ion-button (click)="saveActivity()" class="bottomBtn saveBtn"
+      >Save</ion-button
+    >
+  </div>
+</ion-content>

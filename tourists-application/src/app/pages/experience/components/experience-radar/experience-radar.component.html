@@ -1,0 +1,41 @@
+<app-experience-toolbar></app-experience-toolbar>
+
+<div #mapContainer class="map-container">
+  <div #mapParent class="map-frame">
+    <div #map id="map" class="mapRadar"></div>
+  </div>
+  <div class="progressDiv">
+    <div class="progressBar" *ngIf="activities != null">
+      <div class="progressText">
+        <span>
+          {{ (activitiesCompleted$ | async).length }}/{{
+            (allActivities$ | async).length
+          }}
+          activities
+        </span>
+      </div>
+      <div
+        class="insideProgress"
+        [ngStyle]="{
+          'width.%':
+            ((activitiesCompleted$ | async).length /
+              (allActivities$ | async).length) *
+            100
+        }"
+      ></div>
+    </div>
+  </div>
+  <ion-icon
+    #indicator
+    class="indicators"
+    name="arrow-forward-outline"
+    slot="start"
+    style="visibility: hidden;"
+  ></ion-icon>
+</div>
+<app-map-activity
+  *ngIf="selectedActivity != null"
+  [activity]="selectedActivity"
+  [experienceId]="experienceId"
+  class="activity"
+></app-map-activity>

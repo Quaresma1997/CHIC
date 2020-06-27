@@ -1,0 +1,39 @@
+.content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px;
+
+  .text {
+    display: flex;
+    flex-wrap: wrap;
+    flex-flow: column;
+
+    span {
+      margin-top: 8px;
+    }
+  }
+
+  .icon {
+    padding: 8px;
+    border: 1px;
+    border-style: solid;
+    display: inline;
+  }
+}
+
+.titleCompleted {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  ion-icon {
+    color: var(--ion-color-green) !important;
+    font-size: 16px;
+    margin-left: 4px;
+  }
+}
+
+.enterBtn {
+  --background: var(--ion-color-green) !important;
+}

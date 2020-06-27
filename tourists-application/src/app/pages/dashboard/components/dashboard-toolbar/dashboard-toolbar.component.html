@@ -1,0 +1,17 @@
+<div id="content">
+  <ion-menu-button class="menuIcon"></ion-menu-button>
+  <div id="search">
+    <ion-button *ngIf="!showSearchBar" class="searchBtn" (click)="setSearch()">
+      <ion-icon name="search-sharp"></ion-icon>
+    </ion-button>
+    <ion-searchbar
+      class="searchBar"
+      type="text"
+      placeholder="Search"
+      [(ngModel)]="query"
+      (ionInput)="getExperiences($event)"
+      maxlength="30"
+      *ngIf="showSearchBar"
+    ></ion-searchbar>
+  </div>
+</div>

@@ -1,0 +1,82 @@
+<ion-split-pane contentId="main" when="(min-width: 0)">
+  <div class="menu" side="start" contentId="main">
+    <ion-content>
+      <div class="list">
+        <div class="upperList">
+          <ion-item lines="none" class="activated">
+            <!-- (click)="goHome()" -->
+            <ion-icon name="home-outline" slot="start"></ion-icon>
+            <ion-label class="font-16">Dashboard</ion-label>
+          </ion-item>
+          <ion-item lines="none" class="faded" disabled>
+            <!-- (click)="goHome()" -->
+            <ion-icon
+              src="../../../../../assets/imgs/profile.svg"
+              slot="start"
+            ></ion-icon>
+            <ion-label class="font-16">Profile</ion-label>
+          </ion-item>
+          <ion-item lines="none" class="faded" disabled>
+            <!-- (click)="goHome()" -->
+            <ion-icon
+              src="../../../../../assets/imgs/statistics.svg"
+              slot="start"
+            ></ion-icon>
+            <ion-label class="font-16">Statistics</ion-label>
+          </ion-item>
+          <ion-item lines="none" class="faded" disabled>
+            <!-- (click)="goHome()" -->
+            <ion-icon
+              src="../../../../../assets/imgs/forum.svg"
+              slot="start"
+            ></ion-icon>
+            <ion-label class="font-16">Forum</ion-label>
+          </ion-item>
+        </div>
+        <div class="bottomList">
+          <ion-item lines="none" class="faded" disabled>
+            <!-- (click)="goHome()" -->
+            <ion-icon
+              src="../../../../../assets/imgs/settings.svg"
+              slot="start"
+            ></ion-icon>
+            <ion-label class="font-16">Settings</ion-label>
+          </ion-item>
+          <ion-item lines="none" class="faded" disabled>
+            <!-- (click)="goHome()" -->
+            <ion-icon
+              src="../../../../../assets/imgs/about_us.svg"
+              slot="start"
+            ></ion-icon>
+            <ion-label class="font-16">About Us</ion-label>
+          </ion-item>
+          <ion-item lines="none" class="faded" disabled>
+            <!-- (click)="goHome()" -->
+            <ion-icon
+              src="../../../../../assets/imgs/faq.svg"
+              slot="start"
+            ></ion-icon>
+            <ion-label class="font-16">F.A.Q</ion-label>
+          </ion-item>
+          <ion-item lines="none" class="faded" disabled>
+            <!-- (click)="goHome()" -->
+            <ion-icon
+              src="../../../../../assets/imgs/logout.svg"
+              slot="start"
+            ></ion-icon>
+            <ion-label class="font-16">Logout</ion-label>
+          </ion-item>
+        </div>
+      </div>
+    </ion-content>
+  </div>
+  <!-- the main content -->
+  <div id="main" #main>
+    <app-dashboard-toolbar
+      (searchExperiences)="searchExperiences($event)"
+    ></app-dashboard-toolbar>
+    <ion-content id="content">
+      <app-experience-list [experiences$]="experiences$"></app-experience-list>
+    </ion-content>
+  </div>
+</ion-split-pane>

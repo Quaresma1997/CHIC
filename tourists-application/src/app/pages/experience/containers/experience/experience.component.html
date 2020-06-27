@@ -1,0 +1,33 @@
+<div id="main">
+  <!-- <app-experience-intro
+    *ngIf="!experienceEntered; else experienceBlock"
+    (enterExperience)="enterExperience()"
+    [experience]="experience"
+  ></app-experience-intro> -->
+  
+  <div>
+    <ion-tabs>
+      <ion-tab-bar class="tabs" slot="bottom">
+        <ion-tab-button tab="about">
+          <ion-icon name="information-circle-sharp"></ion-icon>
+          <ion-label>About</ion-label>
+        </ion-tab-button>
+
+        <ion-tab-button tab="list">
+          <ion-icon name="reorder-four-sharp"></ion-icon>
+          <ion-label>Activities</ion-label>
+        </ion-tab-button>
+
+        <ion-tab-button tab="map">
+          <ion-icon name="map-sharp"></ion-icon>
+          <ion-label>Map</ion-label>
+        </ion-tab-button>
+
+        <ion-tab-button tab="radar">
+          <ion-icon name="radio-sharp"></ion-icon>
+          <ion-label>Radar</ion-label>
+        </ion-tab-button>
+      </ion-tab-bar>
+    </ion-tabs>
+  </div>
+</div>

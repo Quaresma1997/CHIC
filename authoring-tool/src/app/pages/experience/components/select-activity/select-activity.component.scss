@@ -1,0 +1,26 @@
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+
+  .matSelect {
+    flex: 70%;
+
+    mat-select {
+      background-color: white;
+      // border-radius: 8px;
+      padding: 8px;
+    }
+  }
+
+  .iconDiv {
+    flex: 15%;
+    text-align: center;
+  }
+}
+
+ion-icon {
+  cursor: pointer;
+  font-size: 24px;
+  --ionicon-stroke-width: 40px !important;
+}

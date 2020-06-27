@@ -1,0 +1,28 @@
+<div id="main">
+  <app-dashboard-toolbar
+    (searchExperiences)="searchExperiences($event)"
+  ></app-dashboard-toolbar>
+  <ion-content id="content">
+    <!-- <div class="title">
+      <span><b>Favoritos</b></span>
+      <img [src]="'assets/imgs/dashPic.svg'" class="image" />
+    </div> -->
+    <div class="title">
+      <span class="titleSpan">Favourites</span>
+    </div>
+    <!-- <ion-button (click)="goToMap()">Mapa</ion-button> -->
+    <app-experience-list
+      [experiences$]="experiences$"
+      *ngIf="(experiences$ | async).length > 0; else noFavourites"
+    ></app-experience-list>
+
+    <ng-template #noFavourites>
+      <div class="noFavourites">
+        <img src="assets/imgs/no-favourites.svg" />
+        <span class="noFavsMsg"
+          >Tap on the star and the experience will be added to your favourites list</span
+        >
+      </div>
+    </ng-template>
+  </ion-content>
+</div>
