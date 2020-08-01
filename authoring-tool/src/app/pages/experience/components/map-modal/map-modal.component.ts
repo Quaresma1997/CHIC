@@ -77,8 +77,8 @@ export class MapModalComponent implements OnInit, OnDestroy {
 
     tiles.on('tileerror', (error, tile) => {
       this.toastService.presentToast(`Error getting parts of the map`, 'danger');
-      console.log('TILES ERROR');
-      console.log(error);
+      // console.log('TILES ERROR');
+      // console.log(error);
     });
 
     tiles.addTo(this.map);

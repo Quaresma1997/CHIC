@@ -57,7 +57,6 @@ export class ExperienceListComponent implements OnInit, OnDestroy {
       .pipe(filter(e => e instanceof NavigationEnd))
       .subscribe((e: NavigationEnd) => {
         if (e.url === mapUrl && !this.inited) {
-          console.log('MAP ENTERED');
           this.startSubscriptionActivities();
 
         }

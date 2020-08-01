@@ -31,7 +31,6 @@ export class DashboardToolbarComponent implements OnInit, OnDestroy {
     if (this.subscription3 === null) {
       const sub = fromEvent(document, 'click').subscribe((event) => {
         const target = event.target as HTMLTextAreaElement;
-        console.log(target.parentElement);
         if ((target.parentElement === null && !target.classList.contains('searchBtn')) ||
           (target.parentElement !== null && !target.parentElement.classList.contains('searchbar-input-container') &&
             !target.parentElement.classList.contains('searchBar'))) {

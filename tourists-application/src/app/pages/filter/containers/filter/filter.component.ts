@@ -36,7 +36,6 @@ export class FilterComponent implements OnInit {
           break;
       }
     });
-    console.log(filters);
 
     this.cd.detectChanges();
   }

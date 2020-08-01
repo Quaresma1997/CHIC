@@ -56,8 +56,6 @@ export const BASIC_COMPONENTS = [
   components.DynamicComponent,
   components.MapModalComponent,
   components.MapMediaComponent
-
-
 ];
 
 

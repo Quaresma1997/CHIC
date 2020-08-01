@@ -95,7 +95,6 @@ export class ActivityComponent implements OnInit, OnDestroy, ComponentCanDeactiv
     let parentsCompleted;
     this.st.pipe(select(store.getActivitiesFromActivityAsTarget(this.activity.id)), take(1)).subscribe(value => parentsCompleted = value);
     if (parentsCompleted.length === 0) {
-      console.log('NO PARENTS');
       return;
     }
 
@@ -123,7 +122,6 @@ export class ActivityComponent implements OnInit, OnDestroy, ComponentCanDeactiv
   setLocationSubscription() {
     const sub2 = this.st.pipe(select(store.getExperienceLocation)).subscribe(location => {
       if (location != null) {
-        console.log(location);
         this.location = location;
         this.cd.detectChanges();
       }
@@ -142,7 +140,6 @@ export class ActivityComponent implements OnInit, OnDestroy, ComponentCanDeactiv
       .pipe(filter(e => e instanceof NavigationEnd))
       .subscribe((e: NavigationEnd) => {
         if (e.url === this.actUrl && !this.inited) {
-          console.log('MAP ENTERED');
           this.restart();
           // console.log(this.child);
           // this.child.restart();
@@ -167,7 +164,6 @@ export class ActivityComponent implements OnInit, OnDestroy, ComponentCanDeactiv
   }
 
   destroy() {
-    console.log('DESTROY');
     this.subscription.unsubscribe();
     this.subscription3.unsubscribe();
     this.inited = false;
@@ -176,7 +172,6 @@ export class ActivityComponent implements OnInit, OnDestroy, ComponentCanDeactiv
   }
 
   ngOnDestroy() {
-    console.log('NGDESTROY');
     this.destroy();
     this.subscription2.unsubscribe();
   }

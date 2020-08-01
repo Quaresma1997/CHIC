@@ -11,7 +11,7 @@ export class CompletedModalComponent implements OnInit {
   @Input() completed: boolean;
   constructor(public modalController: ModalController) { }
 
-  ngOnInit() { console.log(this.completed); }
+  ngOnInit() {}
 
   leave(leave) {
     if (leave) {

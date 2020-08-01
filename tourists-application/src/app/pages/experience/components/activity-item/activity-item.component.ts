@@ -36,7 +36,7 @@ export class ActivityItemComponent implements OnInit {
   setActivityInstanceAddress(lat, lng) {
     ELG.geocodeService().reverse().latlng([lat, lng]).run((error, result) => {
       if (error != null) {
-        console.log(error);
+        // console.log(error);
         return;
       }
 

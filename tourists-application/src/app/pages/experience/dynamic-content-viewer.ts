@@ -320,7 +320,6 @@ export class ContentViewerComponent implements OnDestroy, DoCheck {
     }
 
     destroy() {
-        console.log('DESTROYYYYYYYYYYYYYYYYYYYYYY');
         this.deleteAudios();
         this.embeddedComponents.forEach(comp => comp.destroy());
         this.embeddedComponents.length = 0;
@@ -331,7 +330,6 @@ export class ContentViewerComponent implements OnDestroy, DoCheck {
 
     ngOnDestroy() {
         // destroy these components else there will be memory leaks
-        console.log('KEKEKEKEK');
         this.destroy();
 
     }

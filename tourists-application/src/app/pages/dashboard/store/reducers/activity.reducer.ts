@@ -25,7 +25,6 @@ export function reducer(
     switch (action.type) {
         case actions.LOAD_ACTIVITIES_SUCCESS: {
             const activities = action.payload;
-            console.log('LOAD_ACTIVITIES_SUCCESS');
             const entities = activities.reduce(
                 (accEntities: { [id: number]: core.ActivityModel }, activity) => {
                     // console.log(activity.moduleData);

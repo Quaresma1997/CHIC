@@ -22,7 +22,7 @@ export class ConfirmDeactivateGuard implements CanDeactivate<ComponentCanDeactiv
                 component.destroy();
                 return true;
             } else {
-                console.log('Don\'t leave');
+                // console.log('Don\'t leave');
             }
         }
 

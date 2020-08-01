@@ -135,19 +135,15 @@ export class ExperiencesMapComponent implements OnInit, OnDestroy {
 
   updateLocation(position) {
     const location = [position.coords.latitude, position.coords.longitude];
-    console.log('new location');
     if (this.location == null) {
-      console.log('CHANGE LOCATION');
       this.setLocation(location);
     } else if (location[0] !== this.location[0] && location[1] !== this.location[1]) {
-      console.log('CHANGE LOCATION');
       this.setLocation(location);
     }
   }
 
   updateLocationError(positionError) {
     this.toastService.presentToast(`Error getting user location`, 'danger');
-    console.log('ERROR', positionError);
   }
 
   setLocation(location) {
@@ -207,7 +203,6 @@ export class ExperiencesMapComponent implements OnInit, OnDestroy {
       .pipe(filter(e => e instanceof NavigationEnd))
       .subscribe((e: NavigationEnd) => {
         if (e.url === this.mapUrl && !this.inited) {
-          console.log('MAP ENTERED');
           this.restart();
           // console.log(this.child);
           // this.child.restart();
@@ -239,7 +234,6 @@ export class ExperiencesMapComponent implements OnInit, OnDestroy {
       if (experiences.length !== 0) {
         this.experiences = experiences;
         if (this.map == null) {
-          console.log('MAP NULL');
           this.initMap();
 
         }
@@ -268,20 +262,17 @@ export class ExperiencesMapComponent implements OnInit, OnDestroy {
   destroy() {
     this.inited = false;
     this.subscription.unsubscribe();
-    console.log('EDSTORY');
     this.destroyMap();
     navigator.geolocation.clearWatch(this.watchId);
     // this.child.destroy();
   }
 
   ngOnDestroy() {
-    console.log('NGDESTROY');
     this.destroy();
     this.subscription2.unsubscribe();
   }
 
   private initMap(): void {
-    console.log('INIT MAP');
     this.map = L.map('map', {
       loadingControl: true,
       center: [41.1096614, -8.615795],
@@ -310,8 +301,6 @@ export class ExperiencesMapComponent implements OnInit, OnDestroy {
 
     tiles.on('tileerror', (error, tile) => {
       this.toastService.presentToast(`Error getting parts of the map`, 'danger');
-      console.log('TILES ERROR');
-      console.log(error);
     });
 
     tiles.addTo(this.map);
@@ -345,7 +334,6 @@ export class ExperiencesMapComponent implements OnInit, OnDestroy {
 
   setMapListeners() {
     this.map.on('click', (e) => {
-      console.log('CLICK');
       if (this.selectedExperience != null) {
         this.setMarkerColor(this.selectedExperience);
         this.selectedExperience = null;
@@ -356,7 +344,6 @@ export class ExperiencesMapComponent implements OnInit, OnDestroy {
 
     this.map.on('moveend', (e) => {
       // this.map.invalidateSize();
-      console.log('MOVEEND');
       if (this.madeSetView) {
         this.madeSetView = false;
         this.centerMapOnUser = true;

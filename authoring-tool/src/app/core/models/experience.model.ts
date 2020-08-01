@@ -77,7 +77,7 @@ export class ExperienceAdapter implements Adapter<ExperienceModel> {
     convertToObject(experience: ExperienceModel): IAPModel {
         const newNodes = [];
         const newEdges = [];
-        console.log(experience);
+        // console.log(experience);
         experience.activities.forEach(act => {
             const { id, ...otherParams } = act;
             newNodes.push({ act_id: id, properties: [otherParams] });

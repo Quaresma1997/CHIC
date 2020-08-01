@@ -72,7 +72,7 @@ export class UpdateExperienceComponent implements OnInit {
         this.originalImagePath = newExperience[img];
         this.image = null;
       }
-      console.log(newExperience);
+      // console.log(newExperience);
       this.experience = newExperience;
       this.cd.detectChanges();
       this.saveForm.emit(newExperience);

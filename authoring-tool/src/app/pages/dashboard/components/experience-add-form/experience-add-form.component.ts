@@ -61,7 +61,7 @@ export class ExperienceAddFormComponent implements OnInit {
 
   submitForm() {
     // Make sure to create a deep copy of the form-model
-    console.log(this.form.value);
+    // console.log(this.form.value);
 
 
     this.isSubmitted = true;

@@ -124,7 +124,6 @@ export class ExperienceRadarComponent implements OnInit, OnDestroy, AfterViewIni
       if (activities.length !== 0) {
         this.activities = activities;
         if (this.map == null) {
-          console.log('MAP NULL');
           this.initMap();
         }
         this.cd.detectChanges();
@@ -144,7 +143,6 @@ export class ExperienceRadarComponent implements OnInit, OnDestroy, AfterViewIni
   setLocationSubscription() {
     const sub2 = this.st.pipe(select(store.getExperienceLocation)).subscribe(location => {
       if (location != null && this.map != null) {
-        console.log(location);
         let locationWasNull = false;
         if (this.location == null) {
           this.madeSetView = true;
@@ -159,7 +157,6 @@ export class ExperienceRadarComponent implements OnInit, OnDestroy, AfterViewIni
           // this.map.setBearing(90);
         }
         if (this.userMarker == null) {
-          console.log(location);
           this.userMarker = L.marker(location, { icon: this.userIcon }).addTo(this.map);
         } else {
           this.userMarker.setLatLng(location);
@@ -198,9 +195,6 @@ export class ExperienceRadarComponent implements OnInit, OnDestroy, AfterViewIni
     // console.log(this.mapElement.nativeElement.getBoundingClientRect());
     this.mapHeight = this.mapElement.nativeElement.clientHeight - this.mapElement.nativeElement.getBoundingClientRect().top;
     this.mapWidth = this.mapElement.nativeElement.clientWidth;
-    console.log('Map height:' + this.mapHeight);
-    console.log('ClientHeight height:' + this.mapElement.nativeElement.clientHeight);
-    console.log(this.resized, this.removeBottom);
     if (this.resized) {
       this.mapHeight += this.mapElement.nativeElement.getBoundingClientRect().top;
       this.resized = false;
@@ -210,8 +204,6 @@ export class ExperienceRadarComponent implements OnInit, OnDestroy, AfterViewIni
     }
 
     this.mapCenter = { x: this.mapWidth / 2, y: this.mapHeight / 2 };
-
-    console.log('Map height:' + this.mapHeight);
   }
 
   resizeMap() {
@@ -229,9 +221,7 @@ export class ExperienceRadarComponent implements OnInit, OnDestroy, AfterViewIni
     const sub2 = this.router.events
       .pipe(filter(e => e instanceof NavigationEnd))
       .subscribe((e: NavigationEnd) => {
-        console.log(e.url);
         if (e.url === this.mapUrl && !this.inited) {
-          console.log('MAP ENTERED');
           this.restart();
           // console.log(this.child);
           // this.child.restart();
@@ -372,8 +362,6 @@ export class ExperienceRadarComponent implements OnInit, OnDestroy, AfterViewIni
     const comp = new L.Control.Compass({ autoActive: true, textErr: ' ' });
     comp.on('compass:rotated', (data) => {
       if (this.location != null) {
-        console.log(data);
-        console.log('ANGLE: ' + data.angle);
         if (data.angle === 0) {
           this.rotation = 360;
         } else {
@@ -731,7 +719,6 @@ export class ExperienceRadarComponent implements OnInit, OnDestroy, AfterViewIni
     let parentsCompleted;
     this.st.pipe(select(store.getActivitiesFromActivityAsTarget(activity.id)), take(1)).subscribe(value => parentsCompleted = value);
     if (parentsCompleted.length === 0) {
-      console.log('NO PARENTS');
       return false;
     }
 

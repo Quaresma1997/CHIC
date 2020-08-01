@@ -29,7 +29,7 @@ export class ModuleService {
         return this.http.get(this.modulesUrl)
             .pipe(
                 map((data: any[]) => data.map(item => this.adapter.adapt(item))),
-                tap(modules => console.log(`pop modules, ${modules}`),
+                tap(modules => console.log(`pop modules`),
                     error => this.showErrorMessage('getting', error)),
             );
     }

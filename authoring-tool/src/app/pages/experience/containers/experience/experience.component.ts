@@ -48,7 +48,7 @@ export class ExperienceComponent implements OnInit, OnDestroy, ComponentCanDeact
       .pipe(filter(e => e instanceof NavigationEnd))
       .subscribe((e: NavigationEnd) => {
         if (e.url === this.urlExperience && !this.inited) {
-          console.log('EXPERIENCE ' + this.experience.id + ' ENTERED');
+          // console.log('EXPERIENCE ' + this.experience.id + ' ENTERED');
           this.menu.side = 'start';
           this.startFunctions();
           this.destroyed = false;
@@ -62,7 +62,7 @@ export class ExperienceComponent implements OnInit, OnDestroy, ComponentCanDeact
 
   startFunctions() {
     this.st.pipe(select(store.getSelectedExperience), take(1)).subscribe(value => this.experience = value);
-    console.log(this.experience);
+    // console.log(this.experience);
     this.st.dispatch(new store.LoadActivitiesSuccess(this.experience.activities));
     this.st.dispatch(new store.LoadConnectionsSuccess(this.experience.connections));
   }

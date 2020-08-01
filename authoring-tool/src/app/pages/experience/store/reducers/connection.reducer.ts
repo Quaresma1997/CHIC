@@ -63,7 +63,6 @@ export function reducer(
         case actions.ADD_CONNECTION_SUCCESS:
         case actions.UPDATE_CONNECTION_SUCCESS: {
             const connection = action.payload;
-            console.log(connection);
             const entities = {
                 ...state.entities,
                 [connection.id]: connection
@@ -76,7 +75,6 @@ export function reducer(
 
         case actions.REMOVE_CONNECTION_SUCCESS: {
             const connectionId = action.payload.id;
-            console.log(connectionId);
 
             const { [connectionId]: removed, ...entities } = state.entities;
 

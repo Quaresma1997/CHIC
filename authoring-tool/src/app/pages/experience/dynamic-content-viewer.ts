@@ -260,7 +260,6 @@ export class ContentViewerComponent implements OnDestroy, DoCheck {
     }
 
     ngOnDestroy() {
-        console.log('DESTROYYYYYYYYYYYY');
         this.deleteAudios();
         this.embeddedComponents.forEach(comp => comp.destroy());
         this.embeddedComponents.length = 0;

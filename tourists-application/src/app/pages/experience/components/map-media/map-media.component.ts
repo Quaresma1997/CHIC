@@ -91,7 +91,6 @@ export class MapMediaComponent implements OnInit, OnDestroy, AfterViewInit {
 
   @Input()
   set setLocation(location) {
-    console.log(location);
     this.userLocation = location;
     if (this.map != null) {
       this.updateLocation();
@@ -142,12 +141,10 @@ export class MapMediaComponent implements OnInit, OnDestroy, AfterViewInit {
      }*/
     this.activities$ = this.st.pipe(select(store.getAllAvailableActivities));
     const sub = this.activities$.subscribe(aaa => {
-      console.log('NEW ACTIVITIES');
       // console.log(this.goals);
       if (!this.activity.completed) {
         this.st.pipe(select(store.getActivityGoals(this.activity.id)), take(1)).subscribe(value => this.goals = value);
         if (this.goals.length === 0) {
-          console.log('aqui1');
           this.setGoals();
         }
         if (!this.hasTimer) {
@@ -219,7 +216,6 @@ export class MapMediaComponent implements OnInit, OnDestroy, AfterViewInit {
 
         this.map.setView(this.userLocation, this.curZoom, true);
       }
-      console.log(this.userMarker);
       if (this.userMarker == null) {
         this.userMarker = L.marker(this.userLocation, { icon: this.userIcon }).addTo(this.map);
         this.map.spin(false);
@@ -234,9 +230,7 @@ export class MapMediaComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   getMapMeasures() {
-    // alert('aaaa');
     // console.log(this.mapElement.nativeElement.getBoundingClientRect());
-    console.log(this.mapElement.nativeElement.getBoundingClientRect());
     this.mapHeight = this.mapElement.nativeElement.clientHeight - 5;
     this.mapWidth = this.mapElement.nativeElement.clientWidth;
     // console.log('Map height:' + this.mapHeight);
@@ -251,8 +245,6 @@ export class MapMediaComponent implements OnInit, OnDestroy, AfterViewInit {
     this.mapCenter = { x: this.mapWidth / 2, y: this.mapHeight / 2 };
 
     this.imgsWidth = this.mapWidth - 60;
-
-    console.log(this.totalImgsWidth, this.imgsWidth);
 
     // console.log('Map height:' + this.mapHeight);
   }
@@ -318,13 +310,11 @@ export class MapMediaComponent implements OnInit, OnDestroy, AfterViewInit {
     this.destroyMap();
     clearInterval(this.interval);
     clearInterval(this.intervalCenter);
-    console.log('DESTORY');
   }
 
   ngOnDestroy() {
     this.destroy();
     this.subscription.unsubscribe();
-    console.log('NGONDESTORY');
   }
 
 
@@ -372,8 +362,6 @@ export class MapMediaComponent implements OnInit, OnDestroy, AfterViewInit {
     const comp = new L.Control.Compass({ autoActive: true, textErr: ' ' });
     comp.on('compass:rotated', (data) => {
       if (this.userLocation != null) {
-        console.log(data);
-        console.log('ANGLE: ' + data.angle);
         if (data.angle === 0) {
           this.rotation = 360;
         } else {
@@ -428,11 +416,8 @@ export class MapMediaComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   setMapListener() {
-    console.log('setMapListener');
     this.map.on('moveend', (e) => {
       // this.map.invalidateSize();
-      // console.log('MOVEEND');
-      console.log(this.madeSetView);
       if (this.madeSetView) {
         this.madeSetView = false;
         this.centerMapOnUser = true;
@@ -712,8 +697,6 @@ export class MapMediaComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    console.log('afterviewinit');
-    console.log(this.hasTimer);
     setTimeout(() => {
       if (this.map != null) {
         this.getMapMeasures(); this.setMapListener();

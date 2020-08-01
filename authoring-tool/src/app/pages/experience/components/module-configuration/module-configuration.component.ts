@@ -148,7 +148,6 @@ export class ModuleConfigurationComponent implements OnInit {
               break;
             case 'number':
               this.numberConfig.push(input);
-              console.log(group[input.label]);
               break;
             case 'select':
               this.selectConfig.push(input);

@@ -47,9 +47,7 @@ export class FavouritesComponent implements OnInit, OnDestroy {
     const sub2 = this.router.events
       .pipe(filter(e => e instanceof NavigationEnd))
       .subscribe((e: NavigationEnd) => {
-        console.log(e.url);
         if (e.url === url && !this.inited) {
-          console.log('MAP ENTERED');
           this.restart();
         }
       });
@@ -71,14 +69,10 @@ export class FavouritesComponent implements OnInit, OnDestroy {
   }
 
   updateLocation(position) {
-    console.log(position);
     const location = [position.coords.latitude, position.coords.longitude];
-    console.log('new location');
     if (this.location == null) {
-      console.log('CHANGE LOCATION');
       this.setLocation(location);
     } else if (location[0] !== this.location[0] && location[1] !== this.location[1]) {
-      console.log('CHANGE LOCATION');
       this.setLocation(location);
     }
   }
@@ -91,7 +85,6 @@ export class FavouritesComponent implements OnInit, OnDestroy {
 
   updateLocationError(positionError) {
     this.toastService.presentToast(`Error getting user location`, 'danger');
-    console.log('ERROR', positionError);
   }
 
   async setCompleted() {
@@ -141,7 +134,6 @@ export class FavouritesComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    console.log('NGDESTROY');
     this.destroy();
     this.subscription2.unsubscribe();
   }

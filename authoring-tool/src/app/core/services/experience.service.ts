@@ -30,7 +30,7 @@ export class ExperienceService {
     return this.http.get(this.experiencesUrl)
       .pipe(
         map((data: any[]) => data.map(item => this.adapter.adapt(item))),
-        tap(experiences => console.log(`fetched experiences, ${experiences}`),
+        tap(experiences => console.log(`fetched experiences`),
           error => this.showErrorMessage('getting', error)),
       );
   }

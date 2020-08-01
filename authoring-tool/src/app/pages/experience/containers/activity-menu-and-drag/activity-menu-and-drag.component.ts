@@ -149,7 +149,7 @@ export class ActivityMenuAndDragComponent implements OnInit, AfterViewInit, OnDe
   }
 
   ngOnInit() {
-    console.log('INIT ' + this.experience.id);
+    // console.log('INIT ' + this.experience.id);
     this.activities$ = this.st.pipe(select(store.getAllActivities));
     this.connections$ = this.st.pipe(select(store.getAllConnections));
     this.modules$ = this.st.pipe(select(store.getAllModules));
@@ -162,7 +162,7 @@ export class ActivityMenuAndDragComponent implements OnInit, AfterViewInit, OnDe
 
   restart() {
 
-    console.log('RESTART');
+    // console.log('RESTART');
     this.subscription4 = new Subscription();
     this.undoRedoComp.start();
     this.startFunctions();
@@ -190,7 +190,7 @@ export class ActivityMenuAndDragComponent implements OnInit, AfterViewInit, OnDe
 
   createActivityClickSub() {
     const sub = fromEvent(this.activityCreate.nativeElement, 'click').subscribe(() => {
-      console.log('CLICK CREATE');
+      // console.log('CLICK CREATE');
       if (!this.dragged) {
         this.clickedActivityBtn = !this.clickedActivityBtn;
       } else {
@@ -256,7 +256,7 @@ export class ActivityMenuAndDragComponent implements OnInit, AfterViewInit, OnDe
   }
 
   destroy() {
-    console.log('DESTROY ' + this.experience.id);
+    // console.log('DESTROY ' + this.experience.id);
 
     this.st.dispatch(new store.ClearHistory());
 
@@ -287,7 +287,7 @@ export class ActivityMenuAndDragComponent implements OnInit, AfterViewInit, OnDe
   }
 
   ngOnDestroy() {
-    console.log('DESTROY ' + this.experience.id);
+    // console.log('DESTROY ' + this.experience.id);
     if (!this.destroyed) {
       this.destroy();
     }
@@ -328,7 +328,7 @@ export class ActivityMenuAndDragComponent implements OnInit, AfterViewInit, OnDe
             removedActivityModule.htmlConfig.forEach(data => {
               if (data.type === 'image' || data.type === 'video' || data.type === 'audio') {
                 if (removedActivity.moduleData[data.label]) {
-                  console.log('delete ' + data.label);
+                  // console.log('delete ' + data.label);
                   // this.uploadFileService.deleteFile(removedActivity.moduleData[data.label].url);
                 }
 
@@ -399,7 +399,7 @@ export class ActivityMenuAndDragComponent implements OnInit, AfterViewInit, OnDe
     ELG.geocodeService().reverse().latlng([lat, lng]).run((error, result) => {
       if (error != null) {
         this.toastService.presentToast(`Error getting the address of the selected activity.`, 'danger');
-        console.log(error);
+        // console.log(error);
         return;
       }
       if (this.updateActivityInstance == null) {
@@ -727,8 +727,8 @@ export class ActivityMenuAndDragComponent implements OnInit, AfterViewInit, OnDe
 
     tiles.on('tileerror', (error, tile) => {
       this.toastService.presentToast(`Error getting parts of the map`, 'danger');
-      console.log('TILES ERROR');
-      console.log(error);
+      // console.log('TILES ERROR');
+      // console.log(error);
     });
 
     tiles.addTo(this.map);
@@ -756,7 +756,7 @@ export class ActivityMenuAndDragComponent implements OnInit, AfterViewInit, OnDe
           first = false;
         }
 
-        console.log('MOVEEND');
+        // console.log('MOVEEND');
         // this.map.off('moveend');
       });
 
@@ -766,7 +766,7 @@ export class ActivityMenuAndDragComponent implements OnInit, AfterViewInit, OnDe
     this.map.on('locationerror', (e) => {
       this.toastService.presentToast(`Error getting user location`, 'danger');
     });
-    console.log('INIT MAP');
+    // console.log('INIT MAP');
     setTimeout(() => { this.resizeMap(); }, 100);
 
     let myAction2;
@@ -1344,7 +1344,6 @@ export class ActivityMenuAndDragComponent implements OnInit, AfterViewInit, OnDe
       this.toastService.presentToast(`Connection created`, 'success');
     } else {
       this.st.dispatch(new store.UpdateConnection(removedConnections[0], false, false));
-      console.log('UPDATED CONNECTION');
     }
   }
 
@@ -1999,7 +1998,6 @@ export class ActivityMenuAndDragComponent implements OnInit, AfterViewInit, OnDe
         onmove: dragMoveListener,
         // call this function on every dragend event
         onend(event) {
-          console.log('DROP');
           // clickOnActivityBtn();
           updateEndRect(event.target.getBoundingClientRect());
           removeCLassToActivityCreate();
@@ -2021,7 +2019,6 @@ export class ActivityMenuAndDragComponent implements OnInit, AfterViewInit, OnDe
           // console.log(event.target, event.currentTarget);
           // const rectModules = interact.getElementRect(this.sourceIcon.nativeElement);
           const rectIcon = interact.getElementRect(this.sourceIcon.el);
-          console.log(event.target.classList);
           let x = event.offsetX;
           let y = event.offsetY;
 
@@ -2134,7 +2131,6 @@ export class ActivityMenuAndDragComponent implements OnInit, AfterViewInit, OnDe
         target.setAttribute('data-x', x);
         target.setAttribute('data-y', y);
       } else {
-        console.log(event.target);
       }
     }
   }

@@ -13,7 +13,6 @@ export class ExperienceExistsGuard implements CanActivate {
     constructor(private st: Store<store.DashboardState>) { }
 
     canActivate(route: ActivatedRouteSnapshot): Observable<boolean> {
-        console.log(route.params);
         return store.checkStoreExperiences(this.st).pipe(
             switchMap(() => {
                 const id = route.params.id;

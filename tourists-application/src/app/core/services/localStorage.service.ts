@@ -129,8 +129,8 @@ export class LocalStorageService {
                 if (index > -1) {
                     favourites.splice(index, 1);
                 }
-                await this.set('favourites', favourites);
             }
+            await this.set('favourites', favourites);
         } else {
             if (insert) {
                 await this.set('favourites', [experienceId]);

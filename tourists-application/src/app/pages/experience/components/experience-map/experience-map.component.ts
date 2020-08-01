@@ -111,7 +111,6 @@ export class ExperienceMapComponent implements OnInit, OnDestroy {
       if (activities.length !== 0) {
         this.activities = activities;
         if (this.map == null) {
-          console.log('MAP NULL');
           this.initMap();
 
         }
@@ -165,7 +164,6 @@ export class ExperienceMapComponent implements OnInit, OnDestroy {
       .pipe(filter(e => e instanceof NavigationEnd))
       .subscribe((e: NavigationEnd) => {
         if (e.url === this.mapUrl && !this.inited) {
-          console.log('MAP ENTERED');
           this.restart();
           // console.log(this.child);
           // this.child.restart();
@@ -258,8 +256,6 @@ export class ExperienceMapComponent implements OnInit, OnDestroy {
 
     tiles.on('tileerror', (error, tile) => {
       this.toastService.presentToast(`Error getting parts of the map`, 'danger');
-      console.log('TILES ERROR');
-      console.log(error);
     });
 
     tiles.addTo(this.map);
@@ -298,7 +294,6 @@ export class ExperienceMapComponent implements OnInit, OnDestroy {
 
   setMapListeners() {
     this.map.on('click', (e) => {
-      console.log('CLICK');
       if (this.selectedActivity != null) {
         this.setMarkerColor(this.selectedActivity);
         this.selectedActivity = null;
@@ -309,7 +304,6 @@ export class ExperienceMapComponent implements OnInit, OnDestroy {
 
     this.map.on('moveend', (e) => {
       // this.map.invalidateSize();
-      console.log('MOVEEND');
       if (this.madeSetView) {
         this.madeSetView = false;
         this.centerMapOnUser = true;

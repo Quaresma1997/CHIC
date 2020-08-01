@@ -71,13 +71,11 @@ export class ExperienceComponent implements OnInit, OnDestroy {
 
     this.inited = false;
     this.destroyed = true;
-    console.log('EDSTORY');
     navigator.geolocation.clearWatch(this.watchId);
     // this.child.destroy();
   }
 
   ngOnDestroy() {
-    console.log('NGDESTROY');
     this.subscription.unsubscribe();
     if (!this.destroyed) {
       this.destroy();
@@ -92,7 +90,6 @@ export class ExperienceComponent implements OnInit, OnDestroy {
 
   async startFunctions() {
     this.st.pipe(select(store.getSelectedExperience), take(1)).subscribe(value => this.experience = value);
-    console.log(this.experience);
     this.startedActivities = [];
     this.st.dispatch(new store.LoadConnectionsSuccess(this.experience.connections));
     this.st.dispatch(new store.ClearActivitesAvailable());
@@ -184,9 +181,7 @@ export class ExperienceComponent implements OnInit, OnDestroy {
     let newActivites;
 
     this.st.pipe(select(store.getActivitiesNotInAvailable(activities)), take(1)).subscribe(value => newActivites = value);
-    console.log(newActivites);
     if (newActivites.length > 0) {
-      console.log('SetActivitesAvailable');
       this.st.dispatch(new store.SetActivitesAvailable(newActivites));
     }
 
@@ -243,14 +238,10 @@ export class ExperienceComponent implements OnInit, OnDestroy {
   }
 
   updateLocation(position) {
-    console.log(position);
     const location = [position.coords.latitude, position.coords.longitude];
-    console.log('new location');
     if (this.location == null) {
-      console.log('CHANGE LOCATION');
       this.setLocation(location);
     } else if (location[0] !== this.location[0] && location[1] !== this.location[1]) {
-      console.log('CHANGE LOCATION');
       this.setLocation(location);
     }
   }
@@ -264,7 +255,7 @@ export class ExperienceComponent implements OnInit, OnDestroy {
 
   updateLocationError(positionError) {
     this.toastService.presentToast(`Error getting user location`, 'danger');
-    console.log('ERROR', positionError);
+    // console.log('ERROR', positionError);
   }
 
   /*enterExperience() {

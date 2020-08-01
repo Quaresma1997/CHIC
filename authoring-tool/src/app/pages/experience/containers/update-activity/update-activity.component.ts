@@ -195,7 +195,7 @@ export class UpdateActivityComponent implements OnInit {
 
     const acts = this.objectKeys(this.files).map(this.uploadFi, this);
     await Promise.all(acts.map(this.handleRejection)).then(() => {
-      console.log('FINISHED');
+      // console.log('FINISHED');
     });
 
   }
@@ -254,7 +254,7 @@ export class UpdateActivityComponent implements OnInit {
           this.originalModule.htmlConfig.forEach(data => {
             if (this.moduleData[data.label]) {
               if (data.type === 'image' || data.type === 'video' || data.type === 'audio') {
-                console.log('delete ' + data.label);
+                // console.log('delete ' + data.label);
                 // console.log(this.moduleData[data.label].url);
                 // this.uploadFileService.deleteFile(this.moduleData[data.label].url);
               }
@@ -265,7 +265,7 @@ export class UpdateActivityComponent implements OnInit {
         if (this.moduleData != null) {
           this.objectKeys(this.files).forEach(label => {
             if (this.moduleData[label]) {
-              console.log('delete ' + label);
+              // console.log('delete ' + label);
               // this.uploadFileService.deleteFile(this.moduleData[label].url);
             }
 
@@ -288,15 +288,15 @@ export class UpdateActivityComponent implements OnInit {
 
       if (this.moduleDataChange) {
         this.toastService.presentToast(`Module content not filled. Please fill at least one of the fields.`, 'danger');
-        console.log('Module content not filled 1');
+        // console.log('Module content not filled 1');
         error = true;
       } else {
         if (this.moduleData == null) {
           this.toastService.presentToast(`Module content not filled. Please fill at least one of the fields.`, 'danger');
-          console.log('Module content not filled 2');
+          // console.log('Module content not filled 2');
           error = true;
         } else {
-          console.log('Module Data used');
+          // console.log('Module Data used');
           newActivity.moduleData = this.moduleData;
         }
       }
@@ -355,18 +355,15 @@ export class UpdateActivityComponent implements OnInit {
         connection.edgeId = 'edge_s_' + connection.sourceId + '_t_' + connection.targetId;
         if (this.originalSourceIds.indexOf(tempEdgeId) !== -1) {
           // UPDATE CONNECTION
-          console.log('UPDATE CONN');
           this.st.dispatch(new store.UpdateConnection(connection));
         } else {
           // CREATE NEW CONNECTION
-          console.log('NEW CONN');
           this.st.dispatch(new store.AddConnection(connection, false, false));
         }
       }
     });
 
     // console.log(newActivity);
-    console.log(newActivity);
     this.saveForm.emit({ new: newActivity, old: oldActivity });
 
     if (this.isColorForChildren) {
@@ -641,12 +638,12 @@ export class UpdateActivityComponent implements OnInit {
 
 
     if (this.changedConnection) {
-      console.log('changedConnection');
+      // console.log('changedConnection');
       return true;
     }
 
     if (this.moduleDataChange) {
-      console.log('moduleDataChange');
+      // console.log('moduleDataChange');
       return true;
     } else if (this.moduleConfigComponent != null) {
       const modFiles = { ...this.moduleConfigComponent.images, ...this.moduleConfigComponent.videos, ...this.moduleConfigComponent.audios };
