@@ -16,7 +16,7 @@
     "@angular/animations": "~9.0.1",
     "@angular/cdk": "^9.2.4",
     "@angular/common": "~9.0.1",
-    "@angular/core": "~9.0.1",
+    "@angular/core": "~10.2.5",
     "@angular/fire": "^6.0.2",
     "@angular/forms": "~9.0.1",
     "@angular/material": "^9.2.4",
